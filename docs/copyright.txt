@@ -1,0 +1,5 @@
+TianHu CLI
+Copyright (C) Respository GitHub - zjqingzun/scypo-TianHu. All rights reserved.
+
+Install the latest TianHu for new features and improvements! https://github.com/zjqingzun/scypo-TianHu
+
