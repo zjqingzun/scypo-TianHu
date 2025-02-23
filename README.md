@@ -2,10 +2,8 @@
 
 
 ## Author
-zjqingzun - Le Trong Nghia
----
-Profession: Software Engineer, Pentester, Tester
----
+zjqingzun - Le Trong Nghia <br>
+Profession: Software Engineer, Pentester, Tester <br>
 Education: Ho Chi Minh City University of Science, HCMUS, VNU-HCM
 
 
