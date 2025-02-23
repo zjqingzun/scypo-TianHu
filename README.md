@@ -8,11 +8,11 @@ Education: Ho Chi Minh City University of Science, HCMUS, VNU-HCM
 
 
 ## Lisense
-# version.scyo-scypo
+### version.scyo-scypo
 GNU General Public License - GPLv3
 
-# version.scyp
+### version.scyp
 Monopoly: zjqingzun
 
-# Other version.scyl
-_(Context-dependent)_
+### Other version.scyl
+_Context-dependent_
