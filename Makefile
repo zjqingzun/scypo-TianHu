@@ -4,8 +4,8 @@ CPP = g++
 CPPFLAGS = -Wall -Wextra
 DEBUGFLAGS = -g -DDEBUG
 
-SRC_DIR_CPP = src/cplus
-BUILD_DIR_CPP = src/cplus
+SRC_DIR_CPP = cent/cplus
+BUILD_DIR_CPP = cent/cplus
 BIN = TianHu.exe
 
 #### RUN CODE ####
