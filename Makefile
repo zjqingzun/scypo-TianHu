@@ -1,12 +1,30 @@
 #### CONFIG ####
 CPP = g++
+OBC = gcc
 
+
+
+
+#### FLAGS ####
 CPPFLAGS = -Wall -Wextra
+OBCFLAGS = -Wall -Wextra
+
 DEBUGFLAGS = -g -DDEBUG
 
+
+
+
+#### DIRECTORIES ####
 SRC_DIR_CPP = cent/cplus
+SRC_DIR_OBC = cent/c
+
 BUILD_DIR_CPP = cent/cplus
+BUILD_DIR_OBC = cent/c
+
 BIN = TianHu.exe
+
+
+
 
 #### RUN CODE ####
 all: $(BIN)
@@ -22,6 +40,7 @@ $(BUILD_DIR_CPP)/main.o: $(SRC_DIR_CPP)/main.cpp $(SRC_DIR_CPP)/main.h
 	if not exist "$(BUILD_DIR_CPP)" mkdir "$(BUILD_DIR_CPP)"
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
+
 clean:
 	@if exist "$(BUILD_DIR_CPP)\cpright.o" del /f "$(BUILD_DIR_CPP)\cpright.o"
 	@if exist "$(BUILD_DIR_CPP)\main.o" del /f "$(BUILD_DIR_CPP)\main.o"
@@ -30,6 +49,7 @@ clean:
 
 run: $(BIN)
 	./$(BIN)
+
 
 debug: $(BIN)
 	gdb -q ./$(BIN)

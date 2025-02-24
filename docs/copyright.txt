@@ -3,3 +3,7 @@ Copyright (C) Respository GitHub - zjqingzun/scypo-TianHu. All rights reserved.
 
 Install the latest TianHu for new features and improvements! https://github.com/zjqingzun/scypo-TianHu
 
+Get familiar with TianHu starting with CLI help. 
+c>|  help
+
+Let's get started!

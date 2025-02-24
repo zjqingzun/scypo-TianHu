@@ -7,6 +7,7 @@
 // Main function
 int main() {
     __printCopyright();
+    //__navigationPointer();
 
     return 0;
 }
