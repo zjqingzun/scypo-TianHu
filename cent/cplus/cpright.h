@@ -1,4 +1,4 @@
-// STL 
+// STL C++ Header file for cpright.cpp
 #include <iostream>
 #include <fstream>
 #include <string>

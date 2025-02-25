@@ -7,7 +7,7 @@
 // Main function
 int main() {
     __printCopyright();
-    //__navigationPointer();
+    __navigationPointer();
 
     return 0;
 }

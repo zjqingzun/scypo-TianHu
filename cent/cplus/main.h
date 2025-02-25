@@ -11,3 +11,8 @@
 // cplus
 #include "cpright.h"
 
+
+
+
+// Function Declarations
+extern "C" void __navigationPointer();

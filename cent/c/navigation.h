@@ -13,12 +13,33 @@
 #include <errno.h>
 #include <dirent.h>
 #include <signal.h>
+#include <conio.h>
+
 
 // Build Library
-#include "../cplus/controller.h"
+#include "linkedin.h"
+//#include "../cplus/controller.h"
+
+
+
+// DEFINE _ MACRO
+#define MAX_LEN 1000
 
 
 
 
-// Functions
+// Functions Declarations
+#ifndef NAVIGATION_H
+#define NAVIGATION_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void __navigationPointer();
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

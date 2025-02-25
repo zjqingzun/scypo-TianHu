@@ -29,21 +29,32 @@ BIN = TianHu.exe
 #### RUN CODE ####
 all: $(BIN)
 
-$(BIN): $(BUILD_DIR_CPP)/cpright.o $(BUILD_DIR_CPP)/main.o
+$(BIN): $(BUILD_DIR_OBC)/error.o $(BUILD_DIR_CPP)/cpright.o $(BUILD_DIR_CPP)/main.o $(BUILD_DIR_OBC)/navigation.o
 	$(CPP) $(DEBUGFLAGS) $^ -o $@
 
 
+$(BUILD_DIR_OBC)/error.o: $(SRC_DIR_OBC)/error.c $(SRC_DIR_OBC)/error.h
+	if not exist "$(BUILD_DIR_OBC)" mkdir "$(BUILD_DIR_OBC)"
+	$(OBC) $(OBCFLAGS) -c $< -o $@
+
 $(BUILD_DIR_CPP)/cpright.o: $(SRC_DIR_CPP)/cpright.cpp $(SRC_DIR_CPP)/cpright.h
+	if not exist "$(BUILD_DIR_CPP)" mkdir "$(BUILD_DIR_CPP)"
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 $(BUILD_DIR_CPP)/main.o: $(SRC_DIR_CPP)/main.cpp $(SRC_DIR_CPP)/main.h
 	if not exist "$(BUILD_DIR_CPP)" mkdir "$(BUILD_DIR_CPP)"
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
+$(BUILD_DIR_OBC)/navigation.o: $(SRC_DIR_OBC)/navigation.c $(SRC_DIR_OBC)/navigation.h
+	if not exist "$(BUILD_DIR_OBC)" mkdir "$(BUILD_DIR_OBC)"
+	$(OBC) $(OBCFLAGS) -c $< -o $@
+
 
 clean:
+	@if exist "$(BUILD_DIR_OBC)\error.o" del /f "$(BUILD_DIR_OBC)\error.o"
 	@if exist "$(BUILD_DIR_CPP)\cpright.o" del /f "$(BUILD_DIR_CPP)\cpright.o"
 	@if exist "$(BUILD_DIR_CPP)\main.o" del /f "$(BUILD_DIR_CPP)\main.o"
+	@if exist "$(BUILD_DIR_OBC)\navigation.o" del /f "$(BUILD_DIR_OBC)\navigation.o"
 	@if exist "$(BIN)" del /f "$(BIN)"
 
 
