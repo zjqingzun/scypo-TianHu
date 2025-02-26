@@ -1,0 +1,5 @@
+SY000001    |   Undefined error.
+FI000001    |   File not found.
+FI000002    |   Cannot open the file! 
+IN000001    |   Invalid input.
+ME000003    |   Memory allocation failed.

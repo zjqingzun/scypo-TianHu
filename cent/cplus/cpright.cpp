@@ -15,7 +15,8 @@ void __printCopyright() {
     // Open the file
     std::ifstream file(_fileName);
     if (!file) {
-        std::cerr << "Cannot open the file! " << _fileName << std::endl;
+        __printError("FI000002");
+        std::cerr << _fileName << std::endl;
         return;
     }
 

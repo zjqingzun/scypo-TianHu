@@ -1,6 +1,14 @@
+// Standard Template Library - STL C
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+
+
+
+// Constants
+#define MAX_LINE_LENGTH 256
+
 
 
 
@@ -12,7 +20,8 @@
 extern "C" {
 #endif
 
-void __printError(int errorCode);
+void __trimWhitespace(char *str);
+void __printError(const char *errorCode);
 
 #ifdef __cplusplus
 }

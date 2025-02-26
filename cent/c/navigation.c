@@ -54,8 +54,12 @@ void __navigationPointer() {
         }
         else {
             printf("\n");
-            __printError(2);
+            __printError("IN000001");
         }
+
+        // Controller
+        
+
         printf("\n\n");
     }
 }

@@ -1,14 +1,18 @@
 |-- .ver
 |
+|-- .vscode
+|
 |-- cent -- c
 |    |
 |    |---- cplus
 |
 |-- docs 
 |
-|-- modules -- controller
+|-- modules -- guideAssistant
 |    |
-|    |-------- help
+|    |-------- launchSoftware
+|
+|-- resources -- erno
 |
 |== env-lang.txt
 |
@@ -16,4 +20,4 @@
 |
 |== README.md
 |
-|== STRUCTURE
+|== STRUCTURE.scy

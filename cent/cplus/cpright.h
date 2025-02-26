@@ -5,6 +5,10 @@
 #include <cstdlib>
 
 
+// Build Library
+#include "../c/linkedin.h"
+
+
 
 
 #ifndef CPRIGHT_H
