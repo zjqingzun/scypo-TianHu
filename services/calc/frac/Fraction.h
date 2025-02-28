@@ -17,7 +17,7 @@ public:
     void setNumerator(int value);
     void setDenominator(int value);
 public:
-		Fraction();
+	Fraction();
 public:
     void input();
     std::string toString();
