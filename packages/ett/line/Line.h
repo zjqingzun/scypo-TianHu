@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-#include "ett/point/Point.h"
+#include "../point/Point.h"
 
 
 

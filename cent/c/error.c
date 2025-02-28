@@ -19,7 +19,7 @@ void __trimWhitespace(char *str) {
 // Print the error message
 void __printError(const char *errorCode) {
     // Open the file
-    const char *_fileName = "resources/erno/ERNO.scy";
+    const char *_fileName = "resrc/erno/ERNO.scy";
     FILE *_file = fopen(_fileName, "r");
     if (!_file) {
         perror("Undefined error.\n");

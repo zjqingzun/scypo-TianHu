@@ -1,13 +1,13 @@
 // Module: cppmodule
 // Description: C++ library header file
-#include "../../modules/cppmodule.h"
+#include "../../pkgs/cppmodule.h"
 
 
 
 
 // Package: cpppackage
 // Description: C++ library header file
-#include "../../packages/cpppackage.h"
+#include "../../mdls/cpppackage.h"
 
 
 
