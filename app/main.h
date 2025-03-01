@@ -6,7 +6,7 @@
 
 // Build Library
 // c
-#include "../c/navigation.h"
+#include "cnavigation.h"
 
 // cplus
 #include "cpright.h"

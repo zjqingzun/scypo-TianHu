@@ -6,7 +6,7 @@
 
 
 // Build Library
-#include "../c/linkedin.h"
+#include "clinkedin.h"
 
 
 
