@@ -4,6 +4,31 @@
 
 
 // Function Definitions
+// Check if the string is mode, module, or controller
+bool __checkStringInFile(const char* str) {
+    const char* _fileName = "docs/mode.txt";
+    FILE *file = fopen(_fileName, "r");
+    if (file == NULL) {
+        __printError("IN000002", _fileName);
+        return false;
+    }
+
+    char line[1024];
+    bool found = false;
+
+    while (fgets(line, sizeof(line), file) != NULL) {
+        // line[strcspn(line, "\n")] = 0;
+        if (strstr(line, str) != NULL) {
+            found = true;
+            break;
+        }
+    }
+
+    fclose(file);
+    return found;
+}
+
+
 // Navigation Pointer
 void __navigationPointer() {
     char _navigationPointer[MAX_LEN] = {0};
@@ -52,13 +77,17 @@ void __navigationPointer() {
         if (strcmp(_navigationPointer, "exit") == 0) {
             break;
         }
+        else if (strcmp(_navigationPointer, "clear") == 0) {
+            system("cls");
+        }
+        else if (__checkStringInFile(_navigationPointer)) {
+            // Controller
+        }
         else {
             printf("\n");
-            __printError("IN000001");
+            __printError("IN000001", _navigationPointer);
         }
 
-        // Controller
-        
 
         printf("\n\n");
     }

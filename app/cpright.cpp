@@ -15,7 +15,7 @@ void __printCopyright() {
     // Open the file
     std::ifstream file(_fileName);
     if (!file) {
-        __printError("FI000002");
+        __printError("FI000002", _fileName.c_str());
         std::cerr << _fileName << std::endl;
         return;
     }

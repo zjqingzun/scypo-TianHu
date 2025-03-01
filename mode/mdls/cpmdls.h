@@ -1,6 +1,9 @@
 // help
-#include "guideAssistant/help.h"
+#include "help/help.h"
 
 
 // launch
-#include "launchSoftware/launch.h"
+#include "launch/launch.h"
+
+
+

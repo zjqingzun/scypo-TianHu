@@ -5,6 +5,25 @@
 
 
 // Function Definitions
+// Remove the leading spaces
+void __removeLeadingSpaces(char *str) {
+    int i = 0, j = 0;
+
+    // Remove the leading spaces
+    while (isspace((unsigned char)str[i])) {
+        i++;
+    }
+
+    // Shift the string
+    while (str[i] != '\0') {
+        str[j] = str[i];
+        i++;
+        j++;
+    }
+    str[j] = '\0';
+}
+
+
 // Trim the whitespace
 void __trimWhitespace(char *str) {
     char *_prog;
@@ -17,7 +36,7 @@ void __trimWhitespace(char *str) {
 
 
 // Print the error message
-void __printError(const char *errorCode) {
+void __printError(const char *errorCode, const char *errorMessage) {
     // Open the file
     const char *_fileName = "resrc/erno/ERNO.scy";
     FILE *_file = fopen(_fileName, "r");
@@ -42,7 +61,8 @@ void __printError(const char *errorCode) {
                 // Print the error message
                 if (message) {
                     __trimWhitespace(message);
-                    printf("Error: %s\n", message);
+                    __removeLeadingSpaces(message);
+                    printf("%s: '%s' %s\n", errorMessage, errorMessage, message);
                 } else {
                     printf("Underfined error.\n");
                 }

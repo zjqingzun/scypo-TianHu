@@ -2,23 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-#include <math.h>
+#include <stdbool.h>
 #include <time.h>
-#include <sys/time.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include <errno.h>
-#include <dirent.h>
-#include <signal.h>
 #include <conio.h>
 
 
 // Build Library
 #include "clinkedin.h"
-//#include "../cplus/controller.h"
+//#include "cpcontroller.h"
 
 
 
@@ -36,6 +28,7 @@
 extern "C" {
 #endif
 
+bool __checkStringInFile(const char* str);
 void __navigationPointer();
 
 #ifdef __cplusplus

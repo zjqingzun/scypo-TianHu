@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 
 
@@ -20,8 +21,9 @@
 extern "C" {
 #endif
 
+void __removeLeadingSpaces(char *str);
 void __trimWhitespace(char *str);
-void __printError(const char *errorCode);
+void __printError(const char *errorCode, const char *errorMessage);
 
 #ifdef __cplusplus
 }
