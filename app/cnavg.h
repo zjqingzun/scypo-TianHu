@@ -10,6 +10,7 @@
 
 // Build Library
 #include "clinkedin.h"
+#define DISABLE_CPP_LIBS
 #include "cpctlr.h"
 
 

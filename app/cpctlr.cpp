@@ -28,7 +28,19 @@ void __calcMode(char* mode) {
 
 void __taskMode(char* mode) {
     std::string _mode = std::string() + mode;
-    printf("Task Mode\n");
-    printf("Mode: %s\n", mode);
+
+    std::istringstream _in(_mode);
+    std::string _buffer;
+
+    getline(_in, _buffer, ' ');
+    getline(_in, _buffer, ' ');
+
+    if (_buffer == "-py") {
+        system("cls");
+        __convertPython();
+    }
+    else {
+        __printError("IN000001", _mode.c_str());
+    }
 }
 

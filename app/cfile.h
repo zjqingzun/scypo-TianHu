@@ -6,6 +6,7 @@
 
 // Build Library
 #include "cerr.h"
+#include "cchar.h"
 
 // Constants
 #define MAX_LINE_LENGTH 256

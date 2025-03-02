@@ -5,22 +5,26 @@ OBC = gcc
 
 
 
-
 #### FLAGS ####
-CPPFLAGS = -Wall -Wextra
+#CPPFLAGS = -Wall -Wextra
+CPPFLAGS = -Wall -Wextra -IC:\Users\IS14p\AppData\Roaming\Python\Python313\site-packages\pybind11\include -IC:\Python313\Include
 OBCFLAGS = -Wall -Wextra
 
 DEBUGFLAGS = -g -DDEBUG
+
+PYTHON_LDFLAGS = -LC:/Python313/libs -lpython313
 
 
 
 
 #### DIRECTORIES ####
-SRC_DIR_CPP = app
-SRC_DIR_OBC = app
+APPDIR_CPP = app
+APPDIR_OBC = app
+BUILDAPPDIR_CPP = app
+BUILDAPPDIR_OBC = app
 
-BUILD_DIR_CPP = app
-BUILD_DIR_OBC = app
+MODEDIR_CPP = mode 
+BUILDMODEDIR_CPP = mode
 
 BIN = TianHu.exe
 
@@ -30,49 +34,55 @@ BIN = TianHu.exe
 #### RUN CODE ####
 all: $(BIN)
 
-$(BIN): $(BUILD_DIR_OBC)/cchar.o $(BUILD_DIR_OBC)/cfile.o $(BUILD_DIR_OBC)/cerr.o  $(BUILD_DIR_CPP)/cpcpr.o $(BUILD_DIR_CPP)/main.o $(BUILD_DIR_OBC)/cnavg.o $(BUILD_DIR_CPP)/cpctlr.o
-	$(CPP) $(DEBUGFLAGS) $^ -o $@
+$(BIN): $(BUILDAPPDIR_OBC)/cchar.o $(BUILDAPPDIR_OBC)/cfile.o $(BUILDAPPDIR_OBC)/cerr.o  $(BUILDAPPDIR_CPP)/cpcpr.o $(BUILDAPPDIR_CPP)/main.o $(BUILDAPPDIR_OBC)/cnavg.o $(BUILDAPPDIR_CPP)/cpctlr.o $(BUILDMODEDIR_CPP)/taskconvert.o
+	$(CPP) $(DEBUGFLAGS) $^ -o $@ $(PYTHON_LDFLAGS)
 
 
 
-$(BUILD_DIR_OBC)/cchar.o: $(SRC_DIR_OBC)/cchar.c $(SRC_DIR_OBC)/cchar.h
-	if not exist "$(BUILD_DIR_OBC)" mkdir "$(BUILD_DIR_OBC)"
+$(BUILDAPPDIR_OBC)/cchar.o: $(APPDIR_OBC)/cchar.c $(APPDIR_OBC)/cchar.h
+	if not exist "$(BUILDAPPDIR_OBC)" mkdir "$(BUILDAPPDIR_OBC)"
 	$(OBC) $(OBCFLAGS) -c $< -o $@
 
-$(BUILD_DIR_OBC)/cfile.o: $(SRC_DIR_OBC)/cfile.c $(SRC_DIR_OBC)/cfile.h
-	if not exist "$(BUILD_DIR_OBC)" mkdir "$(BUILD_DIR_OBC)"
+$(BUILDAPPDIR_OBC)/cfile.o: $(APPDIR_OBC)/cfile.c $(APPDIR_OBC)/cfile.h
+	if not exist "$(BUILDAPPDIR_OBC)" mkdir "$(BUILDAPPDIR_OBC)"
 	$(OBC) $(OBCFLAGS) -c $< -o $@
 
-$(BUILD_DIR_OBC)/cerr.o: $(SRC_DIR_OBC)/cerr.c $(SRC_DIR_OBC)/cerr.h
-	if not exist "$(BUILD_DIR_OBC)" mkdir "$(BUILD_DIR_OBC)"
+$(BUILDAPPDIR_OBC)/cerr.o: $(APPDIR_OBC)/cerr.c $(APPDIR_OBC)/cerr.h
+	if not exist "$(BUILDAPPDIR_OBC)" mkdir "$(BUILDAPPDIR_OBC)"
 	$(OBC) $(OBCFLAGS) -c $< -o $@
 
-$(BUILD_DIR_CPP)/cpcpr.o: $(SRC_DIR_CPP)/cpcpr.cpp $(SRC_DIR_CPP)/cpcpr.h
-	if not exist "$(BUILD_DIR_CPP)" mkdir "$(BUILD_DIR_CPP)"
+$(BUILDAPPDIR_CPP)/cpcpr.o: $(APPDIR_CPP)/cpcpr.cpp $(APPDIR_CPP)/cpcpr.h
+	if not exist "$(BUILDAPPDIR_CPP)" mkdir "$(BUILDAPPDIR_CPP)"
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
-$(BUILD_DIR_CPP)/main.o: $(SRC_DIR_CPP)/main.cpp $(SRC_DIR_CPP)/main.h
-	if not exist "$(BUILD_DIR_CPP)" mkdir "$(BUILD_DIR_CPP)"
+$(BUILDAPPDIR_CPP)/main.o: $(APPDIR_CPP)/main.cpp $(APPDIR_CPP)/main.h
+	if not exist "$(BUILDAPPDIR_CPP)" mkdir "$(BUILDAPPDIR_CPP)"
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
-$(BUILD_DIR_OBC)/cnavg.o: $(SRC_DIR_OBC)/cnavg.c $(SRC_DIR_OBC)/cnavg.h
-	if not exist "$(BUILD_DIR_OBC)" mkdir "$(BUILD_DIR_OBC)"
+$(BUILDAPPDIR_OBC)/cnavg.o: $(APPDIR_OBC)/cnavg.c $(APPDIR_OBC)/cnavg.h
+	if not exist "$(BUILDAPPDIR_OBC)" mkdir "$(BUILDAPPDIR_OBC)"
 	$(OBC) $(OBCFLAGS) -c $< -o $@
 
-$(BUILD_DIR_CPP)/cpctlr.o: $(SRC_DIR_CPP)/cpctlr.cpp $(SRC_DIR_CPP)/cpctlr.h
-	if not exist "$(BUILD_DIR_CPP)" mkdir "$(BUILD_DIR_CPP)"
+$(BUILDAPPDIR_CPP)/cpctlr.o: $(APPDIR_CPP)/cpctlr.cpp $(APPDIR_CPP)/cpctlr.h
+	if not exist "$(BUILDAPPDIR_CPP)" mkdir "$(BUILDAPPDIR_CPP)"
+	$(CPP) $(CPPFLAGS) -c $< -o $@
+
+$(BUILDMODEDIR_CPP)/taskconvert.o: mode/taskconvert.cpp mode/taskconvert.h
+	if not exist "$(BUILDMODEDIR_CPP)" mkdir "$(BUILDMODEDIR_CPP)"
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 
 clean:
-	@if exist "$(BUILD_DIR_OBC)\cchar.o" del /f "$(BUILD_DIR_OBC)\cchar.o"
-	@if exist "$(BUILD_DIR_OBC)\cfile.o" del /f "$(BUILD_DIR_OBC)\cfile.o"
-	@if exist "$(BUILD_DIR_OBC)\cerr.o" del /f "$(BUILD_DIR_OBC)\cerr.o"
-	@if exist "$(BUILD_DIR_CPP)\cpcpr.o" del /f "$(BUILD_DIR_CPP)\cpcpr.o"
-	@if exist "$(BUILD_DIR_CPP)\main.o" del /f "$(BUILD_DIR_CPP)\main.o"
-	@if exist "$(BUILD_DIR_OBC)\cnavg.o" del /f "$(BUILD_DIR_OBC)\cnavg.o"
-	@if exist "$(BUILD_DIR_CPP)\cpctlr.o" del /f "$(BUILD_DIR_CPP)\cpctlr.o"
+	@if exist "$(BUILDAPPDIR_OBC)\cchar.o" del /f "$(BUILDAPPDIR_OBC)\cchar.o"
+	@if exist "$(BUILDAPPDIR_OBC)\cfile.o" del /f "$(BUILDAPPDIR_OBC)\cfile.o"
+	@if exist "$(BUILDAPPDIR_OBC)\cerr.o" del /f "$(BUILDAPPDIR_OBC)\cerr.o"
+	@if exist "$(BUILDAPPDIR_CPP)\cpcpr.o" del /f "$(BUILDAPPDIR_CPP)\cpcpr.o"
+	@if exist "$(BUILDAPPDIR_CPP)\main.o" del /f "$(BUILDAPPDIR_CPP)\main.o"
+	@if exist "$(BUILDAPPDIR_OBC)\cnavg.o" del /f "$(BUILDAPPDIR_OBC)\cnavg.o"
+	@if exist "$(BUILDAPPDIR_CPP)\cpctlr.o" del /f "$(BUILDAPPDIR_CPP)\cpctlr.o"
+	@if exist "$(BUILDMODEDIR_CPP)\taskconvert.o" del /f "$(BUILDMODEDIR_CPP)\taskconvert.o"
 	@if exist "$(BIN)" del /f "$(BIN)"
+	rmdir /s /q mode\services\task\py\__pycache__ 2> NUL
 
 
 run: $(BIN)

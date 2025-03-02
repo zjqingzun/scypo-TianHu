@@ -17,11 +17,12 @@ bool __checkStringInFile(const char* str) {
     // initialize the line buffer
     char _line[1024];
     bool _found = false;
+    char* _cp = __getFirstWord(str);
 
     // check if the string is in the file
     while (fgets(_line, sizeof(_line), _file) != NULL) {
         // line[strcspn(line, "\n")] = 0;
-        if (strstr(_line, str) != NULL) {
+        if (strstr(_line, _cp) != NULL) {
             _found = true;
             break;
         }

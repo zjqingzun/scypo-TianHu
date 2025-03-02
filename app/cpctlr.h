@@ -1,13 +1,22 @@
 // STL C++ Header file for controller.cpp
+#ifndef CPCTLR_H
+#define CPCTLR_H
+
+#ifndef DISABLE_CPP_LIBS
 #ifdef __cplusplus
 #include <iostream>
 #include <string>
+#include <sstream>
 #endif
+#endif // DISABLE_CPP_LIBS
 
 
 // Build Library
 #include "cchar.h"
+#include "cerr.h"
+#ifndef DISABLE_CPP_LIBS
 #include "cppmlib.h"
+#endif
 
 
 
@@ -26,3 +35,4 @@ void __taskMode(char* mode);
 #ifdef __cplusplus
 }
 #endif
+#endif // CPCTLR_H
