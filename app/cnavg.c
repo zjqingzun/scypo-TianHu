@@ -95,7 +95,7 @@ void __navigationPointer() {
             printf("\n");
             __printError("IN000001", _navg);
         }
-        printf("\n\n");
+        printf("\n");
     }
 }
 

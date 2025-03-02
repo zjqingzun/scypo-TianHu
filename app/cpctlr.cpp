@@ -9,6 +9,28 @@ void __normalMode(char* mode) {
     std::string _mode = std::string() + mode;
     std::string mdls = std::string() + __getFirstWord(mode);
     
+    if (mdls == "help") {
+        if (_mode == "help") {
+            __guideMode();
+        }
+        else if (_mode == "help -n") {
+            __guideModule("mdls");
+        }
+        else if (_mode == "help -a") {
+            __guideModule("m-anls");
+        }
+        else if (_mode == "help -c") {
+            __guideModule("m-calc");
+        }
+        else if (_mode == "help -t") {
+            __guideModule("m-task");
+        }
+        else {
+            __printError("IN000001", mode);
+        }
+    } else {
+        __printError("IN000001", mode);
+    }
 }
 
 

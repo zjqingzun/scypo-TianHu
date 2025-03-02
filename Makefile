@@ -23,8 +23,11 @@ APPDIR_OBC = app
 BUILDAPPDIR_CPP = app
 BUILDAPPDIR_OBC = app
 
-MODEDIR_CPP = mode 
-BUILDMODEDIR_CPP = mode
+MODEDIR_CPP := mode 
+BUILDMODEDIR_CPP := mode
+
+MDLSDIR_CPP = mode/mdls
+BUILDMDLSDIR_CPP = mode/mdls
 
 BIN = TianHu.exe
 
@@ -34,11 +37,28 @@ BIN = TianHu.exe
 #### RUN CODE ####
 all: $(BIN)
 
-$(BIN): $(BUILDAPPDIR_OBC)/cchar.o $(BUILDAPPDIR_OBC)/cfile.o $(BUILDAPPDIR_OBC)/cerr.o  $(BUILDAPPDIR_CPP)/cpcpr.o $(BUILDAPPDIR_CPP)/main.o $(BUILDAPPDIR_OBC)/cnavg.o $(BUILDAPPDIR_CPP)/cpctlr.o $(BUILDMODEDIR_CPP)/taskconvert.o
-	$(CPP) $(DEBUGFLAGS) $^ -o $@ $(PYTHON_LDFLAGS)
+MDLS := \
+	$(MDLSDIR_CPP)/help/help.o
+
+
+OBJS := \
+    $(BUILDAPPDIR_OBC)/cchar.o \
+    $(BUILDAPPDIR_OBC)/cfile.o \
+    $(BUILDAPPDIR_OBC)/cerr.o  \
+    $(BUILDAPPDIR_CPP)/cpcpr.o \
+    $(BUILDAPPDIR_CPP)/main.o \
+    $(BUILDAPPDIR_OBC)/cnavg.o \
+    $(BUILDAPPDIR_CPP)/cpctlr.o \
+    $(BUILDMODEDIR_CPP)/taskconvert.o \
+	$(MDLS)
+
+
+$(BIN): $(OBJS)
+	$(CPP) $(DEBUGFLAGS) $(OBJS) -o $@ $(PYTHON_LDFLAGS)
 
 
 
+# APP
 $(BUILDAPPDIR_OBC)/cchar.o: $(APPDIR_OBC)/cchar.c $(APPDIR_OBC)/cchar.h
 	if not exist "$(BUILDAPPDIR_OBC)" mkdir "$(BUILDAPPDIR_OBC)"
 	$(OBC) $(OBCFLAGS) -c $< -o $@
@@ -67,8 +87,16 @@ $(BUILDAPPDIR_CPP)/cpctlr.o: $(APPDIR_CPP)/cpctlr.cpp $(APPDIR_CPP)/cpctlr.h
 	if not exist "$(BUILDAPPDIR_CPP)" mkdir "$(BUILDAPPDIR_CPP)"
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
+
+# MODE
 $(BUILDMODEDIR_CPP)/taskconvert.o: mode/taskconvert.cpp mode/taskconvert.h
 	if not exist "$(BUILDMODEDIR_CPP)" mkdir "$(BUILDMODEDIR_CPP)"
+	$(CPP) $(CPPFLAGS) -c $< -o $@
+
+
+# MODE - MODULES
+$(BUILDMDLSDIR_CPP)/help/help.o: $(MDLSDIR_CPP)/help/help.cpp $(MDLSDIR_CPP)/help/help.h
+	if not exist "$(BUILDMDLSDIR_CPP)/help" mkdir "$(BUILDMDLSDIR_CPP)/help"
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 
@@ -80,9 +108,13 @@ clean:
 	@if exist "$(BUILDAPPDIR_CPP)\main.o" del /f "$(BUILDAPPDIR_CPP)\main.o"
 	@if exist "$(BUILDAPPDIR_OBC)\cnavg.o" del /f "$(BUILDAPPDIR_OBC)\cnavg.o"
 	@if exist "$(BUILDAPPDIR_CPP)\cpctlr.o" del /f "$(BUILDAPPDIR_CPP)\cpctlr.o"
+	
 	@if exist "$(BUILDMODEDIR_CPP)\taskconvert.o" del /f "$(BUILDMODEDIR_CPP)\taskconvert.o"
+
+	@if exist "$(BUILDMDLSDIR_CPP)\help\help.o" del /f "$(BUILDMDLSDIR_CPP)\help\help.o"
+
 	@if exist "$(BIN)" del /f "$(BIN)"
-	rmdir /s /q mode\services\task\py\__pycache__ 2> NUL
+	@if exist mode\services\task\py\__pycache__ rmdir /s /q mode\services\task\py\__pycache__
 
 
 run: $(BIN)

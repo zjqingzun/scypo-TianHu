@@ -6,6 +6,7 @@
         "string": "c",
         "unordered_map": "c",
         "vector": "c",
-        "initializer_list": "c"
+        "initializer_list": "c",
+        "iosfwd": "cpp"
     }
 }
