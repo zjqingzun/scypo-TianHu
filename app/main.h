@@ -2,14 +2,9 @@
 #include <iostream>
 
 
-
-
 // Build Library
-// c
-#include "cnavigation.h"
-
-// cplus
-#include "cpright.h"
+#include "cnavg.h"
+#include "cpcpr.h"
 
 
 

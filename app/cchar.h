@@ -1,29 +1,23 @@
-// Standard Template Library - STL C
+// STL - Standard Template Library C
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
 
 
 
-// Constants
-#define MAX_LINE_LENGTH 256
-
-
-
-
 // Function Declarations
-#ifndef ERROR_H
-#define ERROR_H
+#ifndef CHARACTER_H
+#define CHARACTER_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+void __removeTrailingChars(char *str);
 void __removeLeadingSpaces(char *str);
 void __trimWhitespace(char *str);
-void __printError(const char *errorCode, const char *errorMessage);
+char* __getFirstWord(const char *_str);
 
 #ifdef __cplusplus
 }

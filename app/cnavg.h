@@ -10,8 +10,7 @@
 
 // Build Library
 #include "clinkedin.h"
-//#include "cpcontroller.h"
-
+#include "cpctlr.h"
 
 
 // DEFINE _ MACRO

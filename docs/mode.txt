@@ -1,6 +1,3 @@
-help
-anls
 calc
 task
-
-launch
+anls
