@@ -17,3 +17,18 @@ Monopoly: zjqingzun
 
 ### Other version.scyl
 _Context-dependent_
+
+
+## Usage
+### Build Code
+```sh
+make
+```
+### Run Code
+```sh
+make run
+```
+### Clean Code
+```sh
+make clean
+```
