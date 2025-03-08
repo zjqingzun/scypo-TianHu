@@ -10,7 +10,7 @@ Education: Ho Chi Minh City University of Science, HCMUS, VNU-HCM
 
 ## Lisense
 ### version.scyo-scypo
-GNU General Public License - GPLv3
+Apache Lisense 2.0
 
 ### version.scyp
 Monopoly: zjqingzun
