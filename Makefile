@@ -16,14 +16,24 @@ DEBUGFLAGS = -g -DDEBUG
 
 
 #### DIRECTORIES ####
-APP = app
-AC = app/core
-AU = app/user
-AP = app/proc
+DAPP = app
+DAC = app/core
+DAU = app/user
+DAP = app/proc
+
+DBIN = bin
+
+DLOG = config/logs
+
+DSCRIPT = scripts
+
+DTEST = tests
 
 
-# SRCS - OBJS
-SRCS = $(wildcard $(AP)/*.cpp $(AC)/*.cpp $(AU)/*.cpp)
+
+
+# PROGS - SRCS - OBJS
+SRCS = $(wildcard $(DAP)/*.cpp $(DAC)/*.cpp $(DAU)/*.cpp)
 OBJS = $(SRCS:.cpp=.o)
 
 
@@ -48,9 +58,9 @@ run: $(BIN)
 
 clean:
 	@if exist "$(BIN)" cmd /c del /f "$(BIN)"
-	@if exist "$(AC)\*.o" cmd /c del /f "$(AC)\*.o"
-	@if exist "$(AP)\*.o" cmd /c del /f "$(AP)\*.o"
-	@if exist "$(AU)\*.o" cmd /c del /f "$(AU)\*.o"
+	@if exist "$(DAC)\*.o" cmd /c del /f "$(DAC)\*.o"
+	@if exist "$(DAP)\*.o" cmd /c del /f "$(DAP)\*.o"
+	@if exist "$(DAU)\*.o" cmd /c del /f "$(DAU)\*.o"
 
 
 debug: $(BIN)
