@@ -4,8 +4,7 @@
 
 
 int main() {
-
-    std::cout << "Hello World!" << std::endl;
+    __CCU__();
 
     return 0;
 }

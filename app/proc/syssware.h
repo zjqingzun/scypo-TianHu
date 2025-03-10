@@ -3,11 +3,11 @@
 
 
 // SCL - Supplementary Construction Library for C++
-#include "syssware.h"
-#include "coreprog.h"
-
+#include "../user/user.h"
 
 
 
 
 // Function Declarations
+// Central Control Unit - CLI
+void __CCU__();

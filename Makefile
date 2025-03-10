@@ -1,6 +1,6 @@
 #### CONFIG ####
-CPPCONFIG = g++
-CXXCONFIG = gcc
+CXX = g++
+CC = gcc
 
 BIN = TianHu.exe
 
@@ -33,7 +33,7 @@ DTEST = tests
 
 
 # PROGS - SRCS - OBJS
-SRCS = $(wildcard $(DAP)/*.cpp $(DAC)/*.cpp $(DAU)/*.cpp)
+SRCS = $(wildcard $(DAP)/*.cpp $(DAC)/*.cpp $(DAU)/*.cpp $(DAC)/*.c)
 OBJS = $(SRCS:.cpp=.o)
 
 
@@ -43,13 +43,13 @@ OBJS = $(SRCS:.cpp=.o)
 all: $(BIN)
 
 $(BIN): $(OBJS)
-	$(CPPCONFIG) $(DEBUGFLAGS) $(OBJS) -o $@
+	$(CXX) $(DEBUGFLAGS) $(OBJS) -o $@
 
 %.o: %.cpp
-	$(CPPCONFIG) $(DEBUGFLAGS) -c $< -o $@
+	$(CXX) $(DEBUGFLAGS) -c $< -o $@
 
 %.o: %.c
-	$(CXXCONFIG) $(DEBUGFLAGS) -c $< -o $@
+	$(CC) $(DEBUGFLAGS) -c $< -o $@
 
 
 run: $(BIN)
