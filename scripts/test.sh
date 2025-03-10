@@ -1,8 +1,12 @@
 #!/bin/bash
-LOG_FILE="config/logs/output.log"
-
-echo "=== Chạy kiểm thử ===" | tee -a "$LOG_FILE"
-./scripts/run.sh "$1"
-echo "=== Phân tích lỗi ===" | tee -a "$LOG_FILE"
-perl scripts/log_parser.pl
-echo "=== Kiểm thử hoàn tất ===" | tee -a "$LOG_FILE"
+echo "Running tests..."
+if [ -d "tests" ]; then
+    for test in tests/*.cpp; do
+        if [ -f "$test" ]; then
+            g++ -o test_exec "$test" && ./test_exec
+            rm -f test_exec
+        fi
+    done
+else
+    echo "No tests directory found."
+fi

@@ -65,4 +65,3 @@ clean:
 
 debug: $(BIN)
 	gdb -q ./$(BIN)
-

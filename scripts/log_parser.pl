@@ -2,23 +2,20 @@
 use strict;
 use warnings;
 
-my $error_log = "logs/error.log";
+my $log_file = "config/logs/error.log";
 
-# Kiểm tra nếu file tồn tại
-if (!-e $error_log) {
-    print "⚠️ Không tìm thấy $error_log\n";
-    exit 1;
-}
-
-open(my $fh, '<', $error_log) or die "❌ Không thể mở $error_log: $!";
-
-print "=== Phân tích lỗi ===\n";
-while (my $line = <$fh>) {
-    chomp $line;
-    if ($line =~ /(error|warning)/i) {
-        print "⚠️  $line\n";
+if (-e $log_file) {
+    open(my $fh, '<', $log_file) or die "Cannot open log file: $!";
+    while (my $line = <$fh>) {
+        if ($line =~ /error/i) {
+            print "[ERROR] $line";
+        } elsif ($line =~ /warning/i) {
+            print "[WARNING] $line";
+        } else {
+            print "[INFO] $line";
+        }
     }
+    close($fh);
+} else {
+    print "Log file not found.\n";
 }
-
-close($fh);
-print "=== Hoàn tất phân tích ===\n";
