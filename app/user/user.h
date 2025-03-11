@@ -9,4 +9,4 @@
 
 
 // Function Declarations
-int __userCopyright__();
+int __userCopyright();

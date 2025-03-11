@@ -10,5 +10,5 @@ void __CCU__() {
 
     // Copyright 
     std::cout << "Hello World!" << std::endl;
-    __userCopyright__();
+    __userCopyright();
 }

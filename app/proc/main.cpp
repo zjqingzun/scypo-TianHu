@@ -4,7 +4,7 @@
 
 
 int main() {
+    system("cls");
     __CCU__();
-
     return 0;
 }
