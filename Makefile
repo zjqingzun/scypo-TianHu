@@ -44,7 +44,8 @@ OBJS = \
 	$(DOBJ)/str.o \
 	$(DOBJ)/main.o \
 	$(DOBJ)/cli.o \
-	$(DOBJ)/cpright.o
+	$(DOBJ)/cpright.o \
+	$(DOBJ)/ctl.o
 
 # Print object files for debugging
 print-objs:
@@ -89,12 +90,17 @@ $(DOBJ)/gui.o: $(DAC)/gui.c
 	$(CC) $(CPPFLAGS) -MMD -MP -c $< -o $@
 $(DOBJ)/str.o: $(DAC)/str.c
 	$(CC) $(CPPFLAGS) -MMD -MP -c $< -o $@
+
 $(DOBJ)/main.o: $(DAP)/main.cpp
 	$(CXX) $(CPPFLAGS) -MMD -MP -c $< -o $@
 $(DOBJ)/cli.o: $(DAP)/cli.cpp
 	$(CXX) $(CPPFLAGS) -MMD -MP -c $< -o $@
+$(DOBJ)/ctl.o: $(DAP)/ctl.cpp
+	$(CXX) $(CPPFLAGS) -MMD -MP -c $< -o $@
+
 $(DOBJ)/cpright.o: $(DAU)/cpright.cpp
 	$(CXX) $(CPPFLAGS) -MMD -MP -c $< -o $@
+
 
 # Include dependency files
 -include $(DEPS)

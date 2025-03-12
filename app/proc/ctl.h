@@ -17,7 +17,8 @@ class Controller {
         std::string _status;
         std::string _digit;
         std::string _info;
-        const int COUNT = 9;
+        int _part;
+        const int _MAXCOUNT = 9;
 
     public:
         // Constructors
@@ -34,6 +35,8 @@ class Controller {
     public:
         // Split string method
         bool __splitString(std::string& _input);
+        // Command - CLi
+        void __CommandCLI();
 
     public:
         // Getters
@@ -59,7 +62,7 @@ class Controller {
         void __setDigit( const std::string& val) { _digit  = val; }
         void __setInfo(  const std::string& val) { _info   = val; }
 
-    // public:
+    public:
         // Display method
-        // void __displayParts() const;
+        void __displayParts() const;
 };
