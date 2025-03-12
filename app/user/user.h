@@ -9,4 +9,5 @@
 
 
 // Function Declarations
+// cpright.cpp
 int __userCopyright();

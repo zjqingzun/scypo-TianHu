@@ -1,2 +1,5 @@
+#include "../core/char.h"
+#include "../core/err.h"
 #include "../core/file.h"
+#include "../core/gui.h"
 #include "../core/str.h"

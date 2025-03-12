@@ -1,10 +1,9 @@
-#include "main.h"
+#include "syssware.h"
 
 
 
 
 int main() {
-    system("cls");
     __CCU__();
     return 0;
 }

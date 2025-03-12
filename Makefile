@@ -1,4 +1,4 @@
-#### CONFIG ####
+#### CONFIGURATION ####
 CXX = g++
 CC = gcc
 
@@ -7,10 +7,11 @@ BIN = TianHu.exe
 
 
 
-#### FLAGS ####
+#### COMPILATION FLAGS ####
 CPPFLAGS = -Wall -Wextra
 CXXFLAGS = -Wall -Wextra
 DEBUGFLAGS = -g -DDEBUG
+RELEASEFLAGS = -O2
 
 
 
@@ -21,47 +22,98 @@ DAC = app/core
 DAU = app/user
 DAP = app/proc
 
-DBIN = bin
+DOBJ = obj
 
 DLOG = config/logs
-
 DSCRIPT = scripts
-
 DTEST = tests
 
 
 
 
-# PROGS - SRCS - OBJS
-SRCS = $(wildcard $(DAP)/*.cpp $(DAC)/*.cpp $(DAU)/*.cpp $(DAC)/*.c)
-OBJS = $(SRCS:.cpp=.o)
+#### OBJECT FILES ####
+# Ensure the directories exist
+$(shell mkdir -p $(DOBJ) $(DLOG))
+
+# List object files manually, one per line, in the $(DOBJ) directory
+OBJS = \
+	$(DOBJ)/char.o \
+	$(DOBJ)/err.o \
+	$(DOBJ)/file.o \
+	$(DOBJ)/gui.o \
+	$(DOBJ)/str.o \
+	$(DOBJ)/main.o \
+	$(DOBJ)/cli.o \
+	$(DOBJ)/cpright.o
+
+# Print object files for debugging
+print-objs:
+	@echo $(OBJS)
+
+
+
+
+#### DEPENDENCIES ####
+DEPS = $(OBJS:.o=.d)
 
 
 
 
 #### MAKE RULES ####
-all: $(BIN)
+# Default target is debug build
+all: debug
 
+
+# Debug build
+debug: CPPFLAGS += $(DEBUGFLAGS)
+debug: $(BIN)
+
+
+# Release build
+release: CPPFLAGS += $(RELEASEFLAGS)
+release: $(BIN)
+
+
+# Link object files to create the executable
 $(BIN): $(OBJS)
-	$(CXX) $(DEBUGFLAGS) $(OBJS) -o $@
+	$(CXX) $(CPPFLAGS) $(OBJS) -o $(BIN)
 
-%.o: %.cpp
-	$(CXX) $(DEBUGFLAGS) -c $< -o $@
+# Compilation rules for C++ files
+$(DOBJ)/char.o: $(DAC)/char.c
+	$(CC) $(CPPFLAGS) -MMD -MP -c $< -o $@
+$(DOBJ)/err.o: $(DAC)/err.c
+	$(CC) $(CPPFLAGS) -MMD -MP -c $< -o $@
+$(DOBJ)/file.o: $(DAC)/file.c
+	$(CC) $(CPPFLAGS) -MMD -MP -c $< -o $@
+$(DOBJ)/gui.o: $(DAC)/gui.c
+	$(CC) $(CPPFLAGS) -MMD -MP -c $< -o $@
+$(DOBJ)/str.o: $(DAC)/str.c
+	$(CC) $(CPPFLAGS) -MMD -MP -c $< -o $@
+$(DOBJ)/main.o: $(DAP)/main.cpp
+	$(CXX) $(CPPFLAGS) -MMD -MP -c $< -o $@
+$(DOBJ)/cli.o: $(DAP)/cli.cpp
+	$(CXX) $(CPPFLAGS) -MMD -MP -c $< -o $@
+$(DOBJ)/cpright.o: $(DAU)/cpright.cpp
+	$(CXX) $(CPPFLAGS) -MMD -MP -c $< -o $@
 
-%.o: %.c
-	$(CC) $(DEBUGFLAGS) -c $< -o $@
+# Include dependency files
+-include $(DEPS)
 
 
+# Run the executable
 run: $(BIN)
 	./$(BIN)
 
 
+# Clean up generated files
 clean:
-	@if exist "$(BIN)" cmd /c del /f "$(BIN)"
-	@if exist "$(DAC)\*.o" cmd /c del /f "$(DAC)\*.o"
-	@if exist "$(DAP)\*.o" cmd /c del /f "$(DAP)\*.o"
-	@if exist "$(DAU)\*.o" cmd /c del /f "$(DAU)\*.o"
+	-@rm -f $(BIN) $(DOBJ)/*.o $(DOBJ)/*.d 2>/dev/null || del /f /q $(BIN) $(DOBJ)\*.o $(DOBJ)\*.d 2>NUL
 
 
-debug: $(BIN)
+# Debug with gdb
+debug-gdb: $(BIN)
 	gdb -q ./$(BIN)
+
+
+# Declare phony targets
+.PHONY: all debug release run clean debug-gdb print-objs
