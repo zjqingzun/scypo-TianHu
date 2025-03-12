@@ -1,6 +1,3 @@
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
-
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -9,47 +6,60 @@
 
 // Class
 class Controller {
-private:
-    std::string part1, part2, part3, part4, part5, part6, part7, part8, part9;
-    static const int EXPECTED_PARTS = 9;
+    private:
+        // Variables
+        std::string _pgO;
+        std::string _type;
+        std::string _momo;
+        std::string _exec;
+        std::string _stdd;
+        std::string _pgOc;
+        std::string _status;
+        std::string _digit;
+        std::string _info;
+        const int COUNT = 9;
 
-public:
-    // Constructors
-    Controller();
-    Controller(const std::string& p1, const std::string& p2, const std::string& p3,
-              const std::string& p4, const std::string& p5, const std::string& p6,
-              const std::string& p7, const std::string& p8, const std::string& p9);
+    public:
+        // Constructors
+        Controller();
+        Controller(const std::string& str01, const std::string& str02, const std::string& str03, const std::string& str04, 
+            const std::string& str05, const std::string& str06, const std::string& str07);
+        Controller(const std::string& str01, const std::string& str02, const std::string& str03, const std::string& str04, 
+            const std::string& str05, const std::string& str06, const std::string& str07, const std::string& str08, const std::string str09);
+        
+    public:
+        // Destructor
+        ~Controller();
 
-    // Destructor
-    ~Controller();
+    public:
+        // Split string method
+        bool __splitString(std::string& _input);
 
-    // Split string method
-    bool splitString(const std::string& input);
+    public:
+        // Getters
+        std::string __getPgO()      const { return _pgO;    }
+        std::string __getType()     const { return _type;   }
+        std::string __getMomo()     const { return _momo;   }
+        std::string __getExec()     const { return _exec;   }
+        std::string __getStdd()     const { return _stdd;   }
+        std::string __getPgOc()     const { return _pgOc;   }
+        std::string __getStatus()   const { return _status; }
+        std::string __getDigit()    const { return _digit;  }
+        std::string __getInfo()     const { return _info;   }
+        
+    public:
+        // Setters
+        void __setPgO(   const std::string& val) { _pgO    = val; }
+        void __setType(  const std::string& val) { _type   = val; }
+        void __setMomo(  const std::string& val) { _momo   = val; }
+        void __setExec(  const std::string& val) { _exec   = val; }
+        void __setStdd(  const std::string& val) { _stdd   = val; }
+        void __setPgOc(  const std::string& val) { _pgOc   = val; }
+        void __setStatus(const std::string& val) { _status = val; } 
+        void __setDigit( const std::string& val) { _digit  = val; }
+        void __setInfo(  const std::string& val) { _info   = val; }
 
-    // Getters
-    std::string getPart1() const { return part1; }
-    std::string getPart2() const { return part2; }
-    std::string getPart3() const { return part3; }
-    std::string getPart4() const { return part4; }
-    std::string getPart5() const { return part5; }
-    std::string getPart6() const { return part6; }
-    std::string getPart7() const { return part7; }
-    std::string getPart8() const { return part8; }
-    std::string getPart9() const { return part9; }
-
-    // Setters
-    void setPart1(const std::string& value) { part1 = value; }
-    void setPart2(const std::string& value) { part2 = value; }
-    void setPart3(const std::string& value) { part3 = value; }
-    void setPart4(const std::string& value) { part4 = value; }
-    void setPart5(const std::string& value) { part5 = value; }
-    void setPart6(const std::string& value) { part6 = value; }
-    void setPart7(const std::string& value) { part7 = value; }
-    void setPart8(const std::string& value) { part8 = value; }
-    void setPart9(const std::string& value) { part9 = value; }
-
-    // Display method
-    void displayParts() const;
+    // public:
+        // Display method
+        // void __displayParts() const;
 };
-
-#endif

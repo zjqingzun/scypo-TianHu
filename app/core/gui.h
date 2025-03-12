@@ -15,5 +15,5 @@
 
 
 // Function Declarations
-void __setTextColor(const char* colorName);
+void __setTextColor(const char* _colorName);
 void __resetColor();

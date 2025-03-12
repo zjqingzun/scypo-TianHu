@@ -3,64 +3,43 @@
 
 
 
+//// Function Definitions
+// Constructor
 // Default constructor
-Controller::Controller() : 
-    part1(""), part2(""), part3(""), part4(""), part5(""),
-    part6(""), part7(""), part8(""), part9("") {
+Controller::Controller() :
+    _pgO(""), _type(""), _momo(""), _exec(""), _stdd(""), _pgOc(""), _status(""), _digit(""), _info("") {
+
 }
 
 // Parameterized constructor
-Controller::Controller(const std::string& p1, const std::string& p2, const std::string& p3,
-                     const std::string& p4, const std::string& p5, const std::string& p6,
-                     const std::string& p7, const std::string& p8, const std::string& p9) :
-    part1(p1), part2(p2), part3(p3), part4(p4), part5(p5),
-    part6(p6), part7(p7), part8(p8), part9(p9) {
+Controller::Controller(const std::string& str01, const std::string& str02, const std::string& str03, const std::string& str04, 
+    const std::string& str05, const std::string& str06, const std::string& str07) :
+    _momo(str01), _exec(str02), _stdd(str03), _pgOc(str04), _status(str05), _digit(str06), _info(str07) {
+
 }
+
+Controller::Controller(const std::string& str01, const std::string& str02, const std::string& str03, const std::string& str04, 
+    const std::string& str05, const std::string& str06, const std::string& str07, const std::string& str08, const std::string str09) :
+    _pgO(str01), _type(str02), _momo(str03), _exec(str04), _stdd(str05), _pgOc(str06), _status(str07), _digit(str08), _info(str09) {
+
+}
+
 
 // Destructor
 Controller::~Controller() {
     // Clean up if needed
 }
 
-bool Controller::splitString(const std::string& input) {
-    // Reset all parts
-    part1 = part2 = part3 = part4 = part5 = part6 = part7 = part8 = part9 = "";
 
+// Split string method
+bool Controller::__splitString(std::string& input) {
+    // Reset all parts
+    _pgO = _type = _momo = _exec = _stdd = _pgOc = _status = _digit = _info = "";
+
+    
     std::istringstream iss(input);
     std::string part;
     int currentPart = 1;
 
-    // Split the string by spaces
-    while (iss >> part) {
-        if (currentPart > EXPECTED_PARTS) {
-            return false; // Too many parts
-        }
-        switch(currentPart) {
-            case 1: part1 = part; break;
-            case 2: part2 = part; break;
-            case 3: part3 = part; break;
-            case 4: part4 = part; break;
-            case 5: part5 = part; break;
-            case 6: part6 = part; break;
-            case 7: part7 = part; break;
-            case 8: part8 = part; break;
-            case 9: part9 = part; break;
-        }
-        currentPart++;
-    }
-
     return true;
-}
-
-void Controller::displayParts() const {
-    std::cout << "Các phần sau khi phân tách:" << std::endl;
-    std::cout << "Phần 1: \"" << part1 << "\"" << std::endl;
-    std::cout << "Phần 2: \"" << part2 << "\"" << std::endl;
-    std::cout << "Phần 3: \"" << part3 << "\"" << std::endl;
-    std::cout << "Phần 4: \"" << part4 << "\"" << std::endl;
-    std::cout << "Phần 5: \"" << part5 << "\"" << std::endl;
-    std::cout << "Phần 6: \"" << part6 << "\"" << std::endl;
-    std::cout << "Phần 7: \"" << part7 << "\"" << std::endl;
-    std::cout << "Phần 8: \"" << part8 << "\"" << std::endl;
-    std::cout << "Phần 9: \"" << part9 << "\"" << std::endl;
 }
