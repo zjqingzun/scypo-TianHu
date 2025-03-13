@@ -1,0 +1,10 @@
+[package]
+name = "ciph"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "ciph"
+crate-type = ["dylib"]
+
+[dependencies]
