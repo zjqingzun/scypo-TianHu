@@ -20,11 +20,11 @@ _Context-dependent_
 
 
 ## Usage
-### Build Code
+### Debug Code
 ```sh
-make
+make debug
 ```
-### Run Code
+### Build Code and Run Code
 ```sh
 make run
 ```
