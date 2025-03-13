@@ -138,22 +138,281 @@ void Controller::__CommandCLI() {
             }
         }
     }
-    // Continue......................
+    else if (_part == 5)
+    {
+        if (_type.find('-', 0) != 0)
+        {
+            if (_momo.find('-', 0) != 0)
+            {
+                if (_exec.find('@', 0) != 0)
+                {
+                    __setInfo(__getStdd());
+                    __setDigit(__getExec());
+                    __setPgOc(__getMomo());
+                    __setExec(__getType());
+                    __setMomo(__getPgO());
+                    __setType("");  // Reset
+                    __setPgO("");   // Reset
+                }
+                else
+                {
+                    __setDigit(__getStdd());
+                    __setStatus(__getExec());
+                    __setPgOc(__getMomo());
+                    __setExec(__getType());
+                    __setMomo(__getPgO());
+                    __setType("");  // Reset
+                    __setPgO("");   // Reset
+                }
+            }
+            else 
+            {
+                if (_exec.find('@', 0) != 0)
+                {
+                    __setDigit(__getStdd());
+                    __setPgOc(__getExec());
+                    __setStdd(__getMomo());
+                    __setExec(__getType());
+                    __setMomo(__getPgO());
+                    __setType("");  // Reset
+                    __setPgO("");   // Reset
+                }
+                else
+                {
+                    __setStatus(__getStdd());
+                    __setPgOc(__getExec());
+                    __setStdd(__getMomo());
+                    __setExec(__getType());
+                    __setMomo(__getPgO());
+                    __setType("");  // Reset
+                    __setPgO("");   // Reset
+                }
+            }
+        }
+        else 
+        {
+            if (_stdd.find('-', 0) != 0)
+            {
+                __setPgOc(__getStdd());
+                __setStdd("");
+            }
+        }
+    }
+    else if (_part == 6)
+    {
+        if (_type.find('-', 0) != 0) 
+        {
+            if (_momo.find('-', 0) != 0)
+            {
+                if (_exec.find('@', 0) != 0) 
+                {
+                    __setInfo("");      // Reset
+                    __setDigit("");     // Reset
+                    __setStatus("");    // Reset
+                    __setPgOc("");      // Reset
+                    __setStdd("");      // Reset
+                    __setExec("");      // Reset
+                    __setMomo("error"); // Reset
+                    __setType("");      // Reset
+                    __setPgO("");       // Reset
+                }
+                else
+                {
+                    __setInfo(__getPgOc());
+                    __setDigit(__getStdd());
+                    __setStatus(__getExec());
+                    __setPgOc(__getMomo());
+                    __setExec(__getType());
+                    __setMomo(__getPgO());
+                    __setType("");  // Reset
+                    __setPgO("");   // Reset
+                }
+            }
+            else
+            {
+                if (_exec.find('@', 0) != 0)
+                {
+                    __setInfo(__getPgOc());
+                    __setDigit(__getStdd());
+                    __setPgOc(__getExec());
+                    __setStdd(__getMomo());
+                    __setExec(__getType());
+                    __setMomo(__getPgO());
+                    __setType("");  // Reset
+                    __setPgO("");   // Reset
+                }
+                else
+                {
+                    __setDigit(__getPgOc());
+                    __setStatus(__getStdd());
+                    __setPgOc(__getExec());
+                    __setStdd(__getMomo());
+                    __setExec(__getType());
+                    __setMomo(__getPgO());
+                    __setType("");  // Reset
+                    __setPgO("");   // Reset
+                }
+            }
+        }
+        else
+        {
+            if (_stdd.find('-', 0) != 0)
+            {
+                if (_pgOc.find('@', 0) != 0)
+                {
+                    __setDigit(__getPgOc());
+                    __setPgOc(__getStdd());
+                    __setStdd("");
+                }
+                else
+                {
+                    __setStatus(__getPgOc());
+                    __setPgOc(__getStdd());
+                    __setStdd("");
+                }
+            }
+        }
+    }
+    else if (_part == 7)
+    {
+        if (_type.find('-', 0) != 0)
+        {
+            if (_momo.find('-', 0) == 0 && _stdd.find('@', 0) == 0)
+            {
+                __setInfo(__getStatus());
+                __setDigit(__getPgOc());
+                __setStatus(__getStdd());
+                __setPgOc(__getExec());
+                __setStdd(__getMomo());
+                __setExec(__getType());
+                __setMomo(__getPgO());
+                __setType("");      // Reset
+                __setPgO("");       // Reset
+            }
+            else
+            {
+                __setInfo("");      // Reset
+                __setDigit("");     // Reset
+                __setStatus("");    // Reset
+                __setPgOc("");      // Reset
+                __setStdd("");      // Reset
+                __setExec("");      // Reset
+                __setMomo("error"); // Reset
+                __setType("");      // Reset
+                __setPgO("");       // Reset
+            }
+        }
+        else
+        {
+            if (_stdd.find('-', 0) != 0)
+            {
+                if (_pgOc.find('@', 0) != 0) {
+                    __setInfo(__getStatus());
+                    __setDigit(__getPgOc());
+                    __setPgOc(__getStdd());
+                    __setStatus("");    // Reset
+                    __setStdd("");      // Reset
+                }
+                else
+                {
+                    __setDigit(__getStatus());
+                    __setStatus(__getPgOc());
+                    __setPgOc(__getStdd());
+                    __setStdd("");      // Reset
+                }
+            }
+            else
+            {
+                if (_status.find('@', 0) != 0)
+                {
+                    __setDigit(__getStatus());
+                    __setStatus("");    // Reset
+                }
+            }
+        }
+    }
+    else if (_part == 8)
+    {
+        // Continue....................................................................
+        if (_type.find('-', 0) != 0)
+        {
+            __setInfo("");      // Reset
+            __setDigit("");     // Reset
+            __setStatus("");    // Reset
+            __setPgOc("");      // Reset
+            __setStdd("");      // Reset
+            __setExec("");      // Reset
+            __setMomo("error"); // Reset
+            __setType("");      // Reset
+            __setPgO("");       // Reset
+        }
+        else
+        {
+            if (_stdd.find('-', 0) != 0)
+            {
+                if (_pgOc.find('@', 0) != 0)
+                {
+                    __setInfo("");      // Reset
+                    __setDigit("");     // Reset
+                    __setStatus("");    // Reset
+                    __setPgOc("");      // Reset
+                    __setStdd("");      // Reset
+                    __setExec("");      // Reset
+                    __setMomo("error"); // Reset
+                    __setType("");      // Reset
+                    __setPgO("");       // Reset
+                }
+                else
+                {
+                    __setInfo(__getDigit());
+                    __setDigit(__getStatus());
+                    __setStatus(__getPgOc());
+                    __setPgOc(__getStdd());
+                    __setStdd("");      // Reset
+                }
+            }
+            else
+            {
+                if (_status.find('@', 0) != 0)
+                {
+                    __setInfo(__getDigit());
+                    __setDigit(__getStatus());
+                    __setStatus("");     // Reset
+                }
+            }
+        }
+    }
+    else 
+    {
+        // part is 9
+        if (_type.find('-', 0) != 0 || _stdd.find('-', 0) != 0 || _status.find('@', 0) != 0)
+        {
+            __setInfo("");      // Reset
+            __setDigit("");     // Reset
+            __setStatus("");    // Reset
+            __setPgOc("");      // Reset
+            __setStdd("");      // Reset
+            __setExec("");      // Reset
+            __setMomo("error"); // Reset
+            __setType("");      // Reset
+            __setPgO("");       // Reset
+        }
+    }
 }
 
 
 
 // Display method
 void Controller::__displayParts() const {
-    std::cout << "List  -   Part: \""<< _part   << "\"" << std::endl;
+    std::cout << "Part: \""<< _part   << "\"" << std::endl;
     
-    std::cout << "PackageO: \""      << _pgO    << "\"" << std::endl;
-    std::cout << "Type: \""          << _type   << "\"" << std::endl;
-    std::cout << "Mode - Module: \"" << _momo   << "\"" << std::endl;
-    std::cout << "Execute: \""       << _exec   << "\"" << std::endl;
-    std::cout << "Standard: \""      << _stdd   << "\"" << std::endl;
-    std::cout << "Package: \""       << _pgOc   << "\"" << std::endl;
-    std::cout << "Status: \""        << _status << "\"" << std::endl;
-    std::cout << "Digit: \""         << _digit  << "\"" << std::endl;
-    std::cout << "Info: \""          << _info   << "\"" << std::endl;
+    std::cout << "PackageO       \t|\t\"" << _pgO    << "\"" << std::endl;
+    std::cout << "Type:          \t|\t\"" << _type   << "\"" << std::endl;
+    std::cout << "Mode - Module: \t|\t\"" << _momo   << "\"" << std::endl;
+    std::cout << "Execute:       \t|\t\"" << _exec   << "\"" << std::endl;
+    std::cout << "Standard:      \t|\t\"" << _stdd   << "\"" << std::endl;
+    std::cout << "Package:       \t|\t\"" << _pgOc   << "\"" << std::endl;
+    std::cout << "Status:        \t|\t\"" << _status << "\"" << std::endl;
+    std::cout << "Digit:         \t|\t\"" << _digit  << "\"" << std::endl;
+    std::cout << "Info:          \t|\t\"" << _info   << "\"" << std::endl;
 }

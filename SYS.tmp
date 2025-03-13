@@ -1,2 +1,4 @@
 !(name) resrc   Resource
-!(name) lib     Linked Library
+!(name) obj     Linked Library
+!(name) decen   Decentralize
+!(name) app     Source Code
