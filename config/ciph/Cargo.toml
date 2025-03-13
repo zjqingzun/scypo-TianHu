@@ -5,6 +5,6 @@ edition = "2024"
 
 [lib]
 name = "ciph"
-crate-type = ["dylib"]
+crate-type = ["cdylib"]
 
 [dependencies]
