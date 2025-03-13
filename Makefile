@@ -110,7 +110,8 @@ OBJS = \
 	$(DOBJ)/main.o \
 	$(DOBJ)/ctl.o \
 	$(DOBJ)/cli.o \
-	$(DOBJ)/cpright.o
+	$(DOBJ)/cpright.o \
+	$(DOBJ)/lang.o
 
 # Print object files for debugging | 打印目标文件以进行调试
 print-objs:
