@@ -1,13 +1,17 @@
 # Zerotrace
 
-A minimal network scanning tool inspired by Kali Linux's zerotrace, built in Rust for Windows.
+A minimal network scanning library inspired by Kali Linux's zerotrace, built in Rust and designed for integration with C/C++ projects as a dynamic library.
 
 ## Features
-- Basic TCP port scanning
-- Minimal dependencies (uses only Rust standard library)
-- Cross-platform compatible (designed for Windows)
+- Basic TCP and UDP port scanning
+- Scan single port or port range
+- Optional random delay between scans for basic anonymity
+- Save scan results to a log file
+- Multithreaded scanning for improved performance
+- Progress indicator and scan duration display
 
-## Usage
-1. Build the project:
+## Building the Library
+1. Clone the repository and navigate to the project directory:
    ```bash
-   cargo build --release
+   git clone <repository-url>
+   cd zerotrace

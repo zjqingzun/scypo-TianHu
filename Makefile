@@ -90,7 +90,7 @@ DRUSTDCIPH = $(DCIPH)/ciph.$(DLL_EXT)
 DRUSTLSECRUST = $(DRUSTSECRUST)/secrust.$(DLL_LIB_EXT)
 DRUSTDSECRUST = $(DRUSTSECRUST)/secrust.$(DLL_EXT)
 DRUSTL0TRACE = $(DRUST0TRACE)/zerotrace.$(DLL_LIB_EXT)
-DRUSTD0TRACE = $(DRUST0TRACE)/zerotrace.$(DLL_LIB_EXT)
+DRUSTD0TRACE = $(DRUST0TRACE)/zerotrace.$(DLL_EXT)
 
 #### OBJECT FILES ####
 # Rule to create directories | 创建目录的规则

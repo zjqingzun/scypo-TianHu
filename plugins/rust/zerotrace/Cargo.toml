@@ -5,6 +5,7 @@ edition = "2024"
 
 [lib]
 name = "zerotrace"
-crate-type = ["cdylib"]
+crate-type = ["cdylib"]  # Tạo thư viện liên kết động
 
 [dependencies]
+rand = "0.8.5"

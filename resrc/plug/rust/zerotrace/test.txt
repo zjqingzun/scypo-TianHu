@@ -3,3 +3,21 @@
 
 
 # cargo run -- 127.0.0.1 54321
+
+
+# cargo run -- 127.0.0.1 80-85
+
+
+# cargo run -- 127.0.0.1 80-85 --log scan.log
+
+
+# cargo run -- 127.0.0.1 53 --udp
+
+
+# cargo run -- 127.0.0.1 80-100 --threads 20
+
+
+# cargo run -- 127.0.0.1 80-100 --log scan.log --threads 20
+
+
+# cargo run -- 127.0.0.1 53 --udp --timeout 300
