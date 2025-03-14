@@ -79,6 +79,7 @@ DINCLUDERUST = include/cxx-secrust
 DOBJ = obj
 DRUST = plugins/rust
 DRUSTSECRUST = $(DRUST)/secrust/target/release
+DRUST0TRACE  = $(DRUST)/zerotrace/target/release
 DSCRIPT = scripts
 DTEST = tests
 
@@ -88,6 +89,8 @@ DRUSTLCIPH = $(DCIPH)/ciph.$(DLL_LIB_EXT)
 DRUSTDCIPH = $(DCIPH)/ciph.$(DLL_EXT)
 DRUSTLSECRUST = $(DRUSTSECRUST)/secrust.$(DLL_LIB_EXT)
 DRUSTDSECRUST = $(DRUSTSECRUST)/secrust.$(DLL_EXT)
+DRUSTL0TRACE = $(DRUST0TRACE)/zerotrace.$(DLL_LIB_EXT)
+DRUSTD0TRACE = $(DRUST0TRACE)/zerotrace.$(DLL_LIB_EXT)
 
 #### OBJECT FILES ####
 # Rule to create directories | 创建目录的规则
@@ -135,11 +138,11 @@ check-tools:
 
 # Debug build: Compile with debug flags and copy required DLLs | 调试构建：使用调试标志编译并复制所需DLL
 debug: CPPFLAGS += $(DEBUGFLAGS)
-debug: dirs check-tools $(DRUSTLCIPH) $(DRUSTLSECRUST) $(BIN) copy-dlls
+debug: dirs check-tools $(DRUSTLCIPH) $(DRUSTLSECRUST) $(DRUSTL0TRACE) $(BIN) copy-dlls
 
 # Release build: Compile with optimization flags and copy required DLLs | 发布构建：使用优化标志编译并复制所需DLL
 release: CPPFLAGS += $(RELEASEFLAGS)
-release: dirs check-tools $(DRUSTLCIPH) $(DRUSTLSECRUST) $(BIN) copy-dlls
+release: dirs check-tools $(DRUSTLCIPH) $(DRUSTLSECRUST) $(DRUSTL0TRACE) $(BIN) copy-dlls
 
 # Rule to build Rust ciph crate | 构建Rust ciph crate的规则
 $(DRUSTLCIPH):
@@ -149,19 +152,25 @@ $(DRUSTLCIPH):
 $(DRUSTLSECRUST):
 	@if not exist "$(subst /,\,$(DRUSTLSECRUST))" (cd plugins/rust/secrust && cargo build --release) else (echo $(DRUSTLSECRUST) already exists, skipping build)
 
+# Rule to build Rust zerotrace crate | 构建Rust zerotrace crate的规则
+$(DRUSTL0TRACE):
+	@if not exist "$(subst /,\,$(DRUSTL0TRACE))" (cd plugins/rust/zerotrace && cargo build --release) else (echo $(DRUSTL0TRACE) already exists, skipping build)
+
 # Link object files to create the executable | 链接目标文件以创建可执行文件
 $(BIN): $(OBJS)
-	$(CXX) $(CPPFLAGS) $(OBJS) -o $(BIN) $(DRUSTLCIPH) $(DRUSTLSECRUST) -L$(DCIPH) -L$(DRUSTSECRUST)
+	$(CXX) $(CPPFLAGS) $(OBJS) -o $(BIN) $(DRUSTLCIPH) $(DRUSTLSECRUST) $(DRUSTL0TRACE) -L$(DCIPH) -L$(DRUSTSECRUST) -L$(DRUST0TRACE)
 	@echo Linking completed: $(BIN) created successfully
 
 # Rule to copy dynamic libraries to the current directory | 将动态库复制到当前目录的规则
-copy-dlls: $(DRUSTDCIPH) $(DRUSTDSECRUST)
+copy-dlls: $(DRUSTDCIPH) $(DRUSTDSECRUST) $(DRUSTD0TRACE)
 ifeq ($(OS),Windows)
 	-@if exist "$(subst /,\,$(DRUSTDCIPH))" $(COPY) "$(subst /,\,$(DRUSTDCIPH))" . && echo Copied $(DRUSTDCIPH) to current directory
 	-@if exist "$(subst /,\,$(DRUSTDSECRUST))" $(COPY) "$(subst /,\,$(DRUSTDSECRUST))" . && echo Copied $(DRUSTDSECRUST) to current directory
+	-@if exist "$(subst /,\,$(DRUSTD0TRACE))" $(COPY) "$(subst /,\,$(DRUSTD0TRACE))" . && echo Copied $(DRUSTD0TRACE) to current directory
 else
 	-@if [ -f "$(DRUSTDCIPH)" ]; then $(COPY) "$(DRUSTDCIPH)" . && echo Copied $(DRUSTDCIPH) to current directory; fi
 	-@if [ -f "$(DRUSTDSECRUST)" ]; then $(COPY) "$(DRUSTDSECRUST)" . && echo Copied $(DRUSTDSECRUST) to current directory; fi
+	-@if [ -f "$(DRUSTD0TRACE)" ]; then $(COPY) "$(DRUSTD0TRACE)" . && echo Copied $(DRUSTD0TRACE) to current directory; fi
 endif
 
 # Compilation rules for C files in app/core | app/core中C文件的编译规则
@@ -189,10 +198,12 @@ ifeq ($(OS),Windows)
 	-@if not exist "$(BIN)" echo Error: $(BIN) not found && exit /b 1
 	-@if not exist "$(subst /,\,$(DRUSTDCIPH))" echo Error: $(DRUSTDCIPH) not found && exit /b 1
 	-@if not exist "$(subst /,\,$(DRUSTDSECRUST))" echo Error: $(DRUSTDSECRUST) not found && exit /b 1
+	-@if not exist "$(subst /,\,$(DRUSTD0TRACE))" echo Error: $(DRUSTD0TRACE) not found && exit /b 1
 else
 	-@if [ ! -f "$(BIN)" ]; then echo Error: $(BIN) not found; exit 1; fi
 	-@if [ ! -f "$(DRUSTDCIPH)" ]; then echo Error: $(DRUSTDCIPH) not found; exit 1; fi
 	-@if [ ! -f "$(DRUSTDSECRUST)" ]; then echo Error: $(DRUSTDSECRUST) not found; exit 1; fi
+	-@if [ ! -f "$(DRUSTD0TRACE)" ]; then echo Error: $(DRUSTD0TRACE) not found; exit 1; fi
 endif
 	@echo All required files are present.
 
@@ -208,11 +219,13 @@ ifeq ($(OS),Windows)
 	-@$(RM) $(subst /,\,$(DOBJ)/*.d) 2>NUL
 	-@$(RM) ciph.$(DLL_EXT) 2>NUL
 	-@$(RM) secrust.$(DLL_EXT) 2>NUL
+	-@$(RM) zerotrace.$(DLL_EXT) 2>NUL
 else
-	-@$(RM) $(BIN) $(DOBJ)/*.o $(DOBJ)/*.d ciph.$(DLL_EXT) secrust.$(DLL_EXT)
+	-@$(RM) $(BIN) $(DOBJ)/*.o $(DOBJ)/*.d ciph.$(DLL_EXT) secrust.$(DLL_EXT) zerotrace.$(DLL_EXT)
 endif
 	-@cd config/ciph && cargo clean
 	-@cd plugins/rust/secrust && cargo clean
+	-@cd plugins/rust/zerotrace && cargo clean
 
 # Debug with gdb | 使用gdb调试
 debug-gdb: $(BIN)
