@@ -65,4 +65,5 @@ class Controller {
     public:
         // Display method
         void __displayParts() const;
+        std::string __command() const;
 };

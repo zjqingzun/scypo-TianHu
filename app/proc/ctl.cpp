@@ -382,9 +382,8 @@ void Controller::__CommandCLI() {
             }
         }
     }
-    else 
+    else if (_part == 9)
     {
-        // part is 9
         if (_type.find('-', 0) != 0 || _stdd.find('-', 0) != 0 || _status.find('@', 0) != 0)
         {
             __setInfo("");      // Reset
@@ -397,6 +396,18 @@ void Controller::__CommandCLI() {
             __setType("");      // Reset
             __setPgO("");       // Reset
         }
+    }
+    else
+    {
+        __setInfo("");      // Reset
+        __setDigit("");     // Reset
+        __setStatus("");    // Reset
+        __setPgOc("");      // Reset
+        __setStdd("");      // Reset
+        __setExec("");      // Reset
+        __setMomo("cont");  // Reset
+        __setType("");      // Reset
+        __setPgO("");       // Reset
     }
 }
 
@@ -415,4 +426,9 @@ void Controller::__displayParts() const {
     std::cout << "Status:        \t|\t\"" << _status << "\"" << std::endl;
     std::cout << "Digit:         \t|\t\"" << _digit  << "\"" << std::endl;
     std::cout << "Info:          \t|\t\"" << _info   << "\"" << std::endl;
+}
+
+std::string Controller::__command() const {
+    std::string _result = _pgO + " " + _type + " " + _momo + " " + _exec + " " + _stdd + " " + _pgOc + " " + _status + " " + _digit + " " + _info;
+    return _result;
 }
