@@ -73,6 +73,8 @@ DAC = app/core
 DAU = app/user
 DAP = app/proc
 DLOG  = config/logs
+DDECEN = decen
+DCLASS0 = $(DDECEN)/0momo
 DCIPH = config/ciph/target/release
 DINCLUDE = include
 DINCLUDERUST = include/cxx-secrust
@@ -104,6 +106,11 @@ else
 endif
 
 # List of object files in $(DOBJ) directory | $(DOBJ)目录中的目标文件列表
+# \decen
+DSYSSWARE = \
+	$(DOBJ)/0momo.o
+
+# List of object files in $(DOBJ) directory | $(DOBJ)目录中的目标文件列表
 OBJS = \
 	$(DOBJ)/char.o \
 	$(DOBJ)/err.o \
@@ -114,7 +121,8 @@ OBJS = \
 	$(DOBJ)/ctl.o \
 	$(DOBJ)/cli.o \
 	$(DOBJ)/cpright.o \
-	$(DOBJ)/lang.o
+	$(DOBJ)/lang.o \
+	$(DSYSSWARE)
 
 # Print object files for debugging | 打印目标文件以进行调试
 print-objs:
@@ -185,6 +193,11 @@ $(DOBJ)/%.o: $(DAP)/%.cpp
 
 # Compilation rules for C++ files in app/user | app/user中C++文件的编译规则
 $(DOBJ)/%.o: $(DAU)/%.cpp
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I$(DINCLUDE) -I$(DINCLUDERUST) -MMD -MP -c $< -o $@
+	@echo Compiled $< to $@
+
+# Compilation rules for C++ files in decen | decen中C++文件的编译规则
+$(DOBJ)/%.o: $(DCLASS0)/%.cpp
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I$(DINCLUDE) -I$(DINCLUDERUST) -MMD -MP -c $< -o $@
 	@echo Compiled $< to $@
 

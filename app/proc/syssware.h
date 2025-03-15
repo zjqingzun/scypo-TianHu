@@ -3,7 +3,6 @@
 
 
 // SCL - Supplementary Construction Library for C++
-#include "ctl.h"
 #include "../user/user.h"
 #include "../../decen/cmd.h"
 
