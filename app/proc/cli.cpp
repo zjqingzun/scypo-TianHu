@@ -31,7 +31,7 @@ void __CCU__() {
         Controller CLI_;
         if (CLI_.__splitString(_ccu)) {
             CLI_.__CommandCLI();
-            //CLI_.__displayParts();
+            CLI_.__displayParts();
             __decen0momoCCU(CLI_);
         }
         
