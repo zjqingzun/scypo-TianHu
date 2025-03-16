@@ -75,6 +75,10 @@ DAP = app/proc
 DLOG  = config/logs
 DDECEN = decen
 DCLASS0 = $(DDECEN)/0momo
+DCLASS1 = $(DDECEN)/1exec
+DCLASS2 = $(DDECEN)/2stdd
+DCLASS3 = $(DDECEN)/3pack
+DCLASS4 = $(DDECEN)/4other
 DCIPH = config/ciph/target/release
 DINCLUDE = include
 DINCLUDERUST = include/cxx-secrust
@@ -107,10 +111,30 @@ endif
 
 # List of object files in $(DOBJ) directory | $(DOBJ)目录中的目标文件列表
 # \decen
-DSYSSWARE = \
+DDE0 = \
 	$(DOBJ)/0momo.o \
 	$(DOBJ)/0mode.o \
 	$(DOBJ)/0module.o
+
+DDE1 = \
+	$(DOBJ)/1exec.o
+
+DDE2 = \
+	$(DOBJ)/2stdd.o
+
+DDE3 = \
+	$(DOBJ)/3pack.o
+
+DDE4 = \
+	$(DOBJ)/4other.o
+
+DSYSSWARE = \
+	$(DDE0)	\
+	$(DDE1)	\
+	$(DDE2)	\
+	$(DDE3)	\
+	$(DDE4)
+
 
 # List of object files in $(DOBJ) directory | $(DOBJ)目录中的目标文件列表
 OBJS = \
@@ -201,6 +225,22 @@ $(DOBJ)/%.o: $(DAU)/%.cpp
 # Compilation rules for C++ files in decen | decen中C++文件的编译规则
 # Compilation rules for C++ files in decen/0momo | decen/0momo中C++文件的编译规则
 $(DOBJ)/%.o: $(DCLASS0)/%.cpp
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I$(DINCLUDE) -I$(DINCLUDERUST) -MMD -MP -c $< -o $@
+	@echo Compiled $< to $@
+
+$(DOBJ)/%.o: $(DCLASS1)/%.cpp
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I$(DINCLUDE) -I$(DINCLUDERUST) -MMD -MP -c $< -o $@
+	@echo Compiled $< to $@
+
+$(DOBJ)/%.o: $(DCLASS2)/%.cpp
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I$(DINCLUDE) -I$(DINCLUDERUST) -MMD -MP -c $< -o $@
+	@echo Compiled $< to $@
+
+$(DOBJ)/%.o: $(DCLASS3)/%.cpp
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I$(DINCLUDE) -I$(DINCLUDERUST) -MMD -MP -c $< -o $@
+	@echo Compiled $< to $@
+
+$(DOBJ)/%.o: $(DCLASS4)/%.cpp
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I$(DINCLUDE) -I$(DINCLUDERUST) -MMD -MP -c $< -o $@
 	@echo Compiled $< to $@
 
