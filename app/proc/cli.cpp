@@ -18,14 +18,8 @@ void __CCU__() {
         std::cout << ">>>>\t";
         getline(std::cin, _ccu);
 
-        
-        // Empty char
-        
-
-
         // Exit
         if (_ccu == "exit") break;
-
 
         // CLI - Command CLI
         Controller CLI_;

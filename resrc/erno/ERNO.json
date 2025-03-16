@@ -1,4 +1,27 @@
 {
-    "errorId": "F001",
-    "errorMessage": "Cannot open file !"
+    "400": {
+        "message": "Bad Request",
+        "description": "The request data is invalid or missing required information",
+        "suggestion": "Check the input data and try again"
+    },
+    "401": {
+        "message": "Unauthorized",
+        "description": "You need to provide valid authentication credentials to access this resource",
+        "suggestion": "Log in again or verify your credentials"
+    },
+    "403": {
+        "message": "Forbidden",
+        "description": "You do not have permission to access this resource",
+        "suggestion": "Contact the administrator to gain access"
+    },
+    "404": {
+        "message": "Not Found",
+        "description": "The requested resource does not exist on the server",
+        "suggestion": "Check the URL or contact the administrator"
+    },
+    "500": {
+        "message": "Internal Server Error",
+        "description": "An error occurred on the server, unable to process the request",
+        "suggestion": "Try again later or contact the support team"
+    }
 }

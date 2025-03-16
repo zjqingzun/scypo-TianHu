@@ -72,6 +72,7 @@ DAPP = app
 DAC = app/core
 DAU = app/user
 DAP = app/proc
+DAL = app/lib
 DLOG  = config/logs
 DDECEN = decen
 DCLASS0 = $(DDECEN)/0momo
@@ -138,6 +139,7 @@ DSYSSWARE = \
 
 # List of object files in $(DOBJ) directory | $(DOBJ)目录中的目标文件列表
 OBJS = \
+	$(DOBJ)/cJSON.o \
 	$(DOBJ)/char.o \
 	$(DOBJ)/err.o \
 	$(DOBJ)/file.o \
@@ -207,6 +209,11 @@ else
 	-@if [ -f "$(DRUSTDSECRUST)" ]; then $(COPY) "$(DRUSTDSECRUST)" . && echo Copied $(DRUSTDSECRUST) to current directory; fi
 	-@if [ -f "$(DRUSTD0TRACE)" ]; then $(COPY) "$(DRUSTD0TRACE)" . && echo Copied $(DRUSTD0TRACE) to current directory; fi
 endif
+
+# Compilation rules for C files in app/lib | app/lib中C文件的编译规则
+$(DOBJ)/%.o: $(DAL)/%.c
+	$(CC) $(CPPFLAGS) -I$(DINCLUDE) -I$(DINCLUDERUST) -MMD -MP -c $< -o $@
+	@echo Compiled $< to $@
 
 # Compilation rules for C files in app/core | app/core中C文件的编译规则
 $(DOBJ)/%.o: $(DAC)/%.c

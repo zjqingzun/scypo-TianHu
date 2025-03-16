@@ -15,7 +15,7 @@ fn __handleClient(mut _stream: TcpStream) {
             _stream.write_all(b"Received your message!").unwrap();
         }
         Ok(_) => println!("No data received"),
-        Err(e) => println!("Failed to read from stream: {}", e),
+        Err(e) => println!("!(tests/plug/rusttools/zerotrace/tcp_listener/src/main.rs) Failed to read from stream: {}", e),
     }
 }
 
@@ -31,7 +31,7 @@ fn main() {
                 println!("New connection: {}", stream.peer_addr().unwrap());
                 __handleClient(stream);
             }
-            Err(e) => println!("Error accepting connection: {}", e),
+            Err(e) => println!("!(tests/plug/rusttools/zerotrace/tcp_listener/src/main.rs) Error accepting connection: {}", e),
         }
     }
 }
