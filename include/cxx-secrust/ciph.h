@@ -11,7 +11,7 @@
 extern "C" {
 #endif
 
-int __ciphEncrypt(const unsigned char *data, size_t len);
+int __ciphEncrypt(const unsigned char *_data, size_t _len);
 
 #ifdef __cplusplus
 }

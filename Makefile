@@ -144,6 +144,7 @@ OBJS = \
 	$(DOBJ)/gui.o \
 	$(DOBJ)/str.o \
 	$(DOBJ)/main.o \
+	$(DOBJ)/test.o \
 	$(DOBJ)/ctl.o \
 	$(DOBJ)/cli.o \
 	$(DOBJ)/cpright.o \

@@ -11,7 +11,7 @@
 extern "C" {
 #endif
 
-int __secrustHash(const unsigned char *data, size_t len);
+int __secrustHash(const unsigned char *_data, size_t _len);
 
 #ifdef __cplusplus
 }

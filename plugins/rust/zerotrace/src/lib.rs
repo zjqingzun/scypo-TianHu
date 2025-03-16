@@ -14,7 +14,10 @@ use scanner::scan_single_port;
 use packet::send_tcp_packet;
 use logger::log_result;
 
-// Hàm chính để quét cổng, xuất ra cho C
+
+
+
+// Main function for port scanning, output for C++
 #[unsafe(no_mangle)]
 pub extern "C" fn zerotrace_scan(
     target: *const c_char,
