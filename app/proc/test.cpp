@@ -22,6 +22,6 @@ void __test000002() {
     if (_result == 0) {
         printf("Scan completed successfully\n");
     } else {
-        printf("!(app/proc/test.cpp) Scan failed with error: %d\n", _result);
+        printf("!(app/proc/test.cpp)\nScan failed with error: %d\n", _result);
     }
 }

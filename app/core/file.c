@@ -17,7 +17,7 @@
 FILE* __fileOpen(const char* _fileName, const char* _mode) {
     FILE* _fp = fopen(_fileName, _mode);
     if (_fp == NULL) {
-        printf("!(app/core/file.c) Cannot open file %s\n", _fileName);
+        printf("!(app/core/file.c)\nCannot open file %s\n", _fileName);
     }
     return _fp;
 }

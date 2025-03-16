@@ -44,19 +44,19 @@ int main() {
                       "}");
         fclose(file);
     } else {
-        fprintf(stderr, "Cannot create sample JSON file\n");
+        fprintf(stderr, "!(app/proc/main.cpp)\nCannot create sample JSON file\n");
         return 1;
     }
 
     // Load error messages from JSON file
-    cJSON *error_data = load_error_messages(file_path);
+    cJSON *error_data = __loadErrorMessages(file_path);
     if (!error_data) {
         return 1;
     }
 
     // Test with various error codes
     for (int i = 0; i < num_tests; i++) {
-        get_error_message(test_error_codes[i], error_data);
+        __getErrorMessage(test_error_codes[i], error_data);
     }
 
     // Free memory

@@ -17,7 +17,7 @@ int main() {
 
     // Check if input is empty
     if(_input.empty()) {
-        std::cout << "!(tests/proc/test-cli.cpp) Error: The input string must not be empty!" << std::endl;
+        std::cout << "!(tests/proc/test-cli.cpp)\nError: The input string must not be empty!" << std::endl;
         return 1;
     }
 
@@ -25,7 +25,7 @@ int main() {
     if (controller_.__splitString(_input)) {
         controller_.__displayParts();
     } else {
-        std::cout << "!(tests/proc/test-cli.cpp) Error: The input string has too many parts!" << std::endl;
+        std::cout << "!(tests/proc/test-cli.cpp)\nError: The input string has too many parts!" << std::endl;
     }
 
     return 0;
