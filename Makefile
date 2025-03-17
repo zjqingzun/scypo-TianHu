@@ -137,21 +137,37 @@ DSYSSWARE = \
 	$(DDE4)
 
 
-# List of object files in $(DOBJ) directory | $(DOBJ)目录中的目标文件列表
-OBJS = \
-	$(DOBJ)/cJSON.o \
-	$(DOBJ)/char.o \
-	$(DOBJ)/err.o \
-	$(DOBJ)/file.o \
+CORE = \
 	$(DOBJ)/gui.o \
+	$(DOBJ)/char.o \
 	$(DOBJ)/str.o \
+	$(DOBJ)/file.o \
+	$(DOBJ)/err.o
+
+LIBR = \
+	$(DOBJ)/cJSON.o
+
+PROC = \
 	$(DOBJ)/main.o \
 	$(DOBJ)/test.o \
 	$(DOBJ)/ctl.o \
-	$(DOBJ)/cli.o \
+	$(DOBJ)/cli.o
+
+USER = \
 	$(DOBJ)/cpright.o \
-	$(DOBJ)/erno.o \
 	$(DOBJ)/lang.o \
+	$(DOBJ)/erno.o \
+	$(DOBJ)/help.o \
+	$(DOBJ)/launch.o \
+	$(DOBJ)/frac.o \
+	$(DOBJ)/zerotrace.o
+
+# List of object files in $(DOBJ) directory | $(DOBJ)目录中的目标文件列表
+OBJS = \
+	$(LIBR) \
+	$(CORE) \
+	$(PROC) \
+	$(USER) \
 	$(DSYSSWARE)
 
 # Print object files for debugging | 打印目标文件以进行调试
