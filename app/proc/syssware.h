@@ -4,7 +4,6 @@
 
 // SCL - Supplementary Construction Library for C++
 #include "../user/user.h"
-#include "../../decen/cmd.h"
 
 
 

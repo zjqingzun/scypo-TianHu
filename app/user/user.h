@@ -4,7 +4,7 @@
 
 // SCL - Supplementary Construction Library for C++
 #include "../proc/coreprog.h"
-
+#include "../../decen/cmd.h"
 
 
 
