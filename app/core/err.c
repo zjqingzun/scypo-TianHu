@@ -8,7 +8,7 @@
 cJSON *__loadErrorMessages(const char *_filePath) {
     FILE *_file = fopen(_filePath, "r");
     if (!_file) {
-        fprintf(stderr, "!(app/core/err.c)\nCannot open file: %s\n", _filePath);
+        fprintf(stderr, "!(app/core/err.c): 01\nCannot open file: %s\n", _filePath);
         return NULL;
     }
 
@@ -20,7 +20,7 @@ cJSON *__loadErrorMessages(const char *_filePath) {
     // Allocate memory for file content
     char *_fileContent = (char *)malloc(_fileSize + 1);
     if (!_fileContent) {
-        fprintf(stderr, "!(app/core/err.c)\nMemory allocation failed for reading file\n");
+        fprintf(stderr, "!(app/core/err.c): 02\nMemory allocation failed for reading file\n");
         fclose(_file);
         return NULL;
     }
@@ -35,7 +35,7 @@ cJSON *__loadErrorMessages(const char *_filePath) {
     free(_fileContent);
 
     if (!_root) {
-        fprintf(stderr, "!(app/core/err.c)\nError parsing JSON: %s\n", cJSON_GetErrorPtr());
+        fprintf(stderr, "!(app/core/err.c): 03\nError parsing JSON: %s\n", cJSON_GetErrorPtr());
         return NULL;
     }
 
@@ -46,14 +46,14 @@ cJSON *__loadErrorMessages(const char *_filePath) {
 // Function to retrieve and print error message based on error code
 void __getErrorMessage(const char *_errorCode, cJSON *_errorData) {
     if (!_errorData) {
-        printf("!(app/core/err.c)\nError data is not available\n");
+        printf("!(app/core/err.c): 04\nError data is not available\n");
         return;
     }
 
     // Look for the error object corresponding to the error code
     cJSON *_errorObj = cJSON_GetObjectItem(_errorData, _errorCode);
     if (!_errorObj || !cJSON_IsObject(_errorObj)) {
-        printf("!(app/core/err.c)\nError Code: %s\n", _errorCode);
+        printf("!(app/core/err.c): 05\nError Code: %s\n", _errorCode);
         printf("  Message: No error information found for this code\n\n");
         return;
     }

@@ -9,7 +9,12 @@ int __userCopyright() {
 
     const char *_fileName = "resrc/sys/copyright.txt";
     FILE* _file = __fileOpen(_fileName, "r");
-    __fileReadByLine(_file);
-    __fileClose(_file);
+    if (!_file) {
+        __erno__("400");
+    }
+    else {
+        __fileReadByLine(_file);
+        __fileClose(_file);
+    }
     return 0;
 }

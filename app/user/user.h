@@ -13,4 +13,8 @@
 int __userCopyright();
 
 
+// erno.cpp
+int __erno__(const char* _errorCode);
+
+
 // lang.cpp

@@ -150,6 +150,7 @@ OBJS = \
 	$(DOBJ)/ctl.o \
 	$(DOBJ)/cli.o \
 	$(DOBJ)/cpright.o \
+	$(DOBJ)/erno.o \
 	$(DOBJ)/lang.o \
 	$(DSYSSWARE)
 
