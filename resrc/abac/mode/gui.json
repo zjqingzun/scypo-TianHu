@@ -1,0 +1,14 @@
+{
+    "cli": {
+        "description": "Switch to Command-line interface",
+        "syntax": "gui cli"
+    },
+    "app": {
+        "description": "Switch to App Interface",
+        "syntax": "gui app"
+    },
+    "web": {
+        "description": "Switch to Web Interface",
+        "syntax": "gui web"
+    }
+}

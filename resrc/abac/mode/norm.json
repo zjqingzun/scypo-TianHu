@@ -1,0 +1,10 @@
+{
+    "help": {
+        "description": "Support and guide users in using the software",
+        "syntax": "norm help ..."
+    },
+    "launch": {
+        "description": "Command to start certain programs specified in the software's list",
+        "syntax": "norm launch ..."
+    }
+}

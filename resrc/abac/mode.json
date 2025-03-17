@@ -1,0 +1,26 @@
+{
+    "interface": {
+        "description": "Convert UI graphics (CLI, app, web, etc.)",
+        "syntax": "interface ..."
+    },
+    "gui": {
+        "description": "Convert UI graphics (CLI, app, web, etc.)",
+        "syntax": "gui ..."
+    },
+    "norm": {
+        "description": "Operating mode in normal state (as when the software first starts)",
+        "syntax": "norm ..."
+    },
+    "calc": {
+        "description": "Operating mode in intensive computing, big data, and computer science state",
+        "syntax": "calc ..."
+    },
+    "task": {
+        "description": "Operating mode in a single-task state for solving a specific problem",
+        "syntax": "calc ..."
+    },
+    "anls": {
+        "description": "Operating mode in data analysis, system validation, data research, machine learning, deep learning, AGI, etct",
+        "syntax": "calc ..."
+    }
+}

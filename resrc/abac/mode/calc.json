@@ -1,0 +1,6 @@
+{
+    "frac": {
+        "description": "Perform calculations with simple fractions",
+        "syntax": "calc frac ..."
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "zerotrace": {
+        "description": "System testing command, used for network scanning and concealing traces during security testing",
+        "syntax": "task zerotrace ..."
+    }
+}
