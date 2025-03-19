@@ -7,7 +7,7 @@
 int __userCopyright() {
     system("cls");
 
-    const char *_fileName = "resrc/sys/copyright.txt";
+    const char *_fileName = "resrc/sys-doc/copyright.txt";
     FILE* _file = __fileOpen(_fileName, "r");
     if (!_file) {
         __erno__("400");
