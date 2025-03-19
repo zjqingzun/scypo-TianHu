@@ -6,19 +6,22 @@
 
 
 
-// Fraction class
+// Class Declarations
 class Fraction {
-private:
-    int _num;
-    int _den;
-public:
-    int getNumerator();
-    int getDenominator();
-    void setNumerator(int value);
-    void setDenominator(int value);
-public:
-	Fraction();
-public:
-    void input();
-    std::string toString();
+    private:
+        int _num;
+        int _den;
+
+    public:
+        int         __getNumerator();
+        int         __getDenominator();
+        void        __setNumerator(int value);
+        void        __setDenominator(int value);
+
+    public:
+	    Fraction();
+
+    public:
+        void        __input();
+        std::string __toString();
 };

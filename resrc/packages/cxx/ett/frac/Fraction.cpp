@@ -2,20 +2,22 @@
 
 
 
+
+// Function Definitions
 // Constructor
-int Fraction::getNumerator() {
+int Fraction::__getNumerator() {
     return _num;
 }
 
-int Fraction::getDenominator() {
+int Fraction::__getDenominator() {
     return _den;
 }
 
-void Fraction::setNumerator(int value) {
+void Fraction::__setNumerator(int value) {
     _num = value;
 }
 
-void Fraction::setDenominator(int value) {
+void Fraction::__setDenominator(int value) {
     _den = value;
 }
 
@@ -24,14 +26,14 @@ Fraction::Fraction() {
 	_den = 1;
 }
 
-void Fraction::input() {
+void Fraction::__input() {
     std::cout << "Numerator:";
     std::cin >> _num;
     std::cout << "Denominator:";
     std::cin >> _den;
 }
 
-std::string Fraction::toString() {    
+std::string Fraction::__toString() {    
     std::stringstream builder;
     builder << _num << "/" << _den;
 	return builder.str();

@@ -3,20 +3,21 @@
 
 
 
+// Function Definitions
 // Contructor
-double Point::getX() {
+double Point::__getX() {
     return _x;
 }
 
-double Point::getY() {
+double Point::__getY() {
     return _y;
 }
 
-void Point::setX(double value) {
+void Point::__setX(double value) {
     _x = value;
 }
 
-void Point::setY(double value) {
+void Point::__setY(double value) {
     _y = value;
 }
 
@@ -25,14 +26,14 @@ Point::Point() {
     _y = 0;
 }
 
-void Point::input() {
+void Point::__input() {
     std::cout << "Enter x: ";
     std::cin >> _x;
     std::cout << "Enter y: ";
     std::cin >> _y;
 }
 
-std::string Point::toString() {
+std::string Point::__toString() {
     std::ostringstream oss;
     oss << "(" << _x << ", " << _y << ")";
     return oss.str();

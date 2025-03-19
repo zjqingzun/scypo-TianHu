@@ -6,19 +6,22 @@
 
 
 
-// Fraction class
+// Class Declarations
 class Point {
-private:
-    double _x;
-    double _y;
-public:
-    double getX();
-    double getY();
-    void setX(double value);
-    void setY(double value);
-public:
-    Point();
-public:
-    void input();
-    std::string toString();
+    private:
+        double _x;
+        double _y;
+    
+    public:
+        double      __getX();
+        double      __getY();
+        void        __setX(double value);
+        void        __setY(double value);
+
+    public:
+        Point();
+
+    public:
+        void        __input();
+        std::string __toString();
 };
