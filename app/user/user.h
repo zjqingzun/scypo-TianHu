@@ -4,7 +4,6 @@
 
 // SCL - Supplementary Construction Library for C++
 #include "../proc/coreprog.h"
-#include "../../decen/cmd.h"
 
 
 
@@ -18,3 +17,16 @@ int __erno__(const char* _errorCode);
 
 
 // lang.cpp
+
+
+// help.cpp
+bool __helpZmain(std::string _exec, std::string _stdd, std::string _pack);
+
+
+// launch.cpp
+
+
+// frac.cpp
+
+
+// zerotrace.cpp

@@ -3,6 +3,7 @@
 
 
 // SCL - Supplementary Construction Library for C++
+#include "../user/syscall.h"
 #include "../user/user.h"
 
 
