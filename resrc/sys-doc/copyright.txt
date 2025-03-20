@@ -6,4 +6,8 @@ Install the latest TianHu for new features and improvements! https://github.com/
 Get familiar with TianHu starting with CLI help. 
 >>>>  help
 
+or:
+
+>>>> -h
+
 Let's get started!

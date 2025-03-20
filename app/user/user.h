@@ -21,7 +21,8 @@ int __erno__(const char* _errorCode);
 
 // help.cpp
 bool __helpZmain(std::string _exec, std::string _stdd, std::string _pack);
-
+bool __helpZSGet(std::string _stdd, std::string pack);
+bool __helpZGet(std::string pack);
 
 // launch.cpp
 
