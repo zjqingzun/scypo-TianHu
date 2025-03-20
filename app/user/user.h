@@ -6,7 +6,7 @@
 
 // SCL - Supplementary Construction Library for C++
 #include "../proc/coreprog.h"
-
+#include "utils.h"
 
 
 // Function Declarations

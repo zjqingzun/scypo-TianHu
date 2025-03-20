@@ -103,6 +103,7 @@ bool processAndPrintJson(const char* filename) {
     std::string jsonStr = readFile(filename);
     
     if (jsonStr.empty()) {
+        std::cout << "01:  !(app/user/help.cpp)\n";
         std::cout << "Unable to read JSON file or file is empty!" << std::endl;
         return false;
     }
@@ -112,6 +113,7 @@ bool processAndPrintJson(const char* filename) {
     if (root == NULL) {
         const char* error_ptr = cJSON_GetErrorPtr();
         if (error_ptr != NULL) {
+            std::cout << "02:  !(app/user/help.cpp)\n";
             std::cout << "JSON parsing error: " << error_ptr << std::endl;
         }
         return false;
@@ -119,6 +121,7 @@ bool processAndPrintJson(const char* filename) {
 
     // Check if root is an object
     if (!cJSON_IsObject(root)) {
+        std::cout << "03:  !(app/user/help.cpp)\n";
         std::cout << "JSON must be an object!" << std::endl;
         cJSON_Delete(root);
         return false;

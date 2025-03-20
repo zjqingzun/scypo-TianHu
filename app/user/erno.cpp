@@ -10,7 +10,7 @@ int __erno__(const char* _errorCode) {
     // Load error messages from JSON file
     cJSON *_errorData = __loadErrorMessages(_filePath);
     if (!_errorData) {
-        std::cerr << "!(app/user/erno.cpp): 02\n";
+        std::cerr << "01:  !(app/user/erno.cpp)\n";
         std::cerr << "Cannot open file\n";
         return 0;
     }

@@ -10,7 +10,7 @@ int __fileReadInteger(FILE* _fp) {
     int _value = -1;
     if (_fp != NULL) {
         if (fscanf(_fp, "%d", &_value) != 1) {
-            printf("!(app/core/str.c)\nError reading integer from file\n");
+            printf("01:  !(app/core/str.c)\nError reading integer from file\n");
             return -1;
         }
     }
@@ -24,7 +24,7 @@ float __fileReadFloat(FILE* _fp) {
     float _value = -1.0f;
     if (_fp != NULL) {
         if (fscanf(_fp, "%f", &_value) != 1) {
-            printf("!(app/core/str.c)\nError reading float from file\n");
+            printf("02:  !(app/core/str.c)\nError reading float from file\n");
             return -1.0f;
         }
     }
@@ -38,7 +38,7 @@ double __fileReadDouble(FILE* _fp) {
     double _value = -1.0;
     if (_fp != NULL) {
         if (fscanf(_fp, "%lf", &_value) != 1) {
-            printf("!(app/core/str.c)\nError reading double from file\n");
+            printf("03:  !(app/core/str.c)\nError reading double from file\n");
             return -1.0;
         }
     }
@@ -52,7 +52,7 @@ long __fileReadLong(FILE* _fp) {
     long _value = -1L;
     if (_fp != NULL) {
         if (fscanf(_fp, "%ld", &_value) != 1) {
-            printf("!(app/core/str.c)\nError reading long from file\n");
+            printf("04:  !(app/core/str.c)\nError reading long from file\n");
             return -1L;
         }
     }
@@ -72,10 +72,10 @@ char* __fileReadWord(FILE* _fp) {
                 strcpy(_word, _buffer);
                 return _word;
             }
-            printf("!(app/core/str.c)\nMemory allocation failed for word\n");
+            printf("05:  !(app/core/str.c)\nMemory allocation failed for word\n");
             return NULL;
         }
-        printf("!(app/core/str.c)\nError reading word from file\n");
+        printf("06:  !(app/core/str.c)\nError reading word from file\n");
     }
     return NULL;
 }
@@ -125,9 +125,9 @@ char* __fileReadStringN(FILE* _fp, int _length) {
                 return _buffer;
             }
             free(_buffer);
-            printf("!(app/core/str.c)\nError reading %d characters from file\n", _length);
+            printf("07:  !(app/core/str.c)\nError reading %d characters from file\n", _length);
         } else {
-            printf("!(app/core/str.c)\nMemory allocation failed for string\n");
+            printf("08:  !(app/core/str.c)\nMemory allocation failed for string\n");
         }
     }
     return NULL;
@@ -171,7 +171,7 @@ char* __fileReadUntilDelimiter(FILE* _fp, char _delimiter) {
                 strcpy(_result, _buffer);
                 return _result;
             }
-            printf("!(app/core/str.c)\nMemory allocation failed for delimited string\n");
+            printf("09:  !(app/core/str.c)\nMemory allocation failed for delimited string\n");
         }
     }
     return NULL;
@@ -195,7 +195,7 @@ int __fileReadBoolean(FILE* _fp) {
                 return 0;
             }
         }
-        printf("!(app/core/str.c)\nError reading boolean value from file\n");
+        printf("10:  !(app/core/str.c)\nError reading boolean value from file\n");
     }
     return -1;
 }
