@@ -26,6 +26,7 @@ void __CCU__() {
         if (CLI_.__splitString(_ccu)) {
             CLI_.__CommandCLI();
             //CLI_.__displayParts();
+            std::cout << std::endl;
             __decen0momoCCU(CLI_);
         }
         
