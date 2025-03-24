@@ -301,8 +301,12 @@ ifeq ($(OS),Windows)
 	-@$(RM) ciph.$(DLL_EXT) 2>NUL
 	-@$(RM) secrust.$(DLL_EXT) 2>NUL
 	-@$(RM) zerotrace.$(DLL_EXT) 2>NUL
+	-@if exist "bin" (for %%f in (bin\*) do if not "%%~nxf"=="permanent.tmp" del /f /q "%%f") 2>NUL
+	-@if exist "cache" (for %%f in (cache\*) do if not "%%~nxf"=="permanent.tmp" del /f /q "%%f") 2>NUL
 else
 	-@$(RM) $(BIN) $(DOBJ)/*.o $(DOBJ)/*.d ciph.$(DLL_EXT) secrust.$(DLL_EXT) zerotrace.$(DLL_EXT)
+	-@find bin -type f -not -name "permanent.tmp" -exec rm -f {} \; 2>/dev/null || true
+	-@find cache -type f -not -name "permanent.tmp" -exec rm -f {} \; 2>/dev/null || true
 endif
 	-@cd config/ciph && cargo clean
 	-@cd plugins/rust/secrust && cargo clean
