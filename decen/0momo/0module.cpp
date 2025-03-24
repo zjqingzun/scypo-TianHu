@@ -11,6 +11,11 @@ bool __decen0module(Controller& cmd_) {
             return true;
         }
     }
+    else if (cmd_.__getMomo() == "launch")
+    {
+        RunLauncher();
+        return true;
+    }
 
     return false;
 }

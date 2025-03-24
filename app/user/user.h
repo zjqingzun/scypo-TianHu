@@ -1,7 +1,8 @@
 // SCL - Supplementary Construction Library for C++
 #include "../proc/coreprog.h"
 #include "utils.h"
-#include "type.h"
+#include <iomanip>
+//#include "type.h"
 
 // Function Declarations
 // cpright.cpp
@@ -24,7 +25,7 @@ void __helpZPrintJsonItem(cJSON* _item);
 bool __helpZProcessAndPrintJson(const char* _fileName);
 
 // launch.cpp
-std::string __launchToLowerCase(const std::string& _str);
+#include "launch.h"
 
 
 // frac.cpp
