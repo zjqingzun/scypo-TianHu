@@ -113,12 +113,14 @@ endif
 # List of object files in $(DOBJ) directory | $(DOBJ)目录中的目标文件列表
 # \decen
 DDE0 = \
+	$(DOBJ)/0handle.o \
 	$(DOBJ)/0momo.o \
 	$(DOBJ)/0mode.o \
 	$(DOBJ)/0module.o
 
 DDE1 = \
-	$(DOBJ)/1exec.o
+	$(DOBJ)/1exec.o \
+	$(DOBJ)/1launch.o
 
 DDE2 = \
 	$(DOBJ)/2stdd.o

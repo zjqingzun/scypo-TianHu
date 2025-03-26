@@ -4,7 +4,7 @@
 
 
 // Function Definitions
-void __decen0momoCCU(Controller& ccu_) {
+void __decen0momo_CCU(Controller& ccu_) {
     bool _flag = false;
     if (ccu_.__getMomo() == "cont")  _flag = true;
 
@@ -17,13 +17,13 @@ void __decen0momoCCU(Controller& ccu_) {
     }
 
     // Mode
-    if (__decen0mode(ccu_) && !_flag) {
+    if (__decen0momo_mode(ccu_) && !_flag) {
         std::cout << "\n";
         _flag = true;
     }
 
     // Module
-    if (__decen0module(ccu_) && !_flag) {
+    if (__decen0momo_module(ccu_) && !_flag) {
         std::cout << "\n";
         _flag = true;
     }

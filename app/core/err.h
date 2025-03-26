@@ -17,9 +17,9 @@ extern "C" {
 
 // Function Declarations
 // Function to load error messages from a JSON file
-cJSON *__loadErrorMessages(const char *_filePath);
+cJSON * __loadErrorMessages(const char *_filePath);
 // Function to retrieve and print error message based on error code
-void __getErrorMessage(const char *_errorCode, cJSON *_errorData);
+void    __getErrorMessage(const char *_errorCode, cJSON *_errorData);
 
 
 #ifdef __cplusplus

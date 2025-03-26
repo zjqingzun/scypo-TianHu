@@ -79,6 +79,26 @@
         "macro": "...",
         "path": "..."
     },
+    "D00001": {
+        "macro": "DECEN_UTILS_0MOMO_H",
+        "path": "decen/utils-0momo.h"
+    },
+    "D10001": {
+        "macro": "DECEN_UTILS_1EXEC_H",
+        "path": "decen/utils-1exec.h"
+    },
+    "D20001": {
+        "macro": "DECEN_UTILS_2STDD_H",
+        "path": "decen/utils-2stdd.h"
+    },
+    "D30001": {
+        "macro": "DECEN_UTILS_3PACK_H",
+        "path": "decen/utils-3pack.h"
+    },
+    "D40001": {
+        "macro": "DECEN_UTILS_4OTHER_H",
+        "path": "decen/utils-4other.h"
+    },
     "I": {
         "macro": "...",
         "path": "..."

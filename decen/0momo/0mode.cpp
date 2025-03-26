@@ -4,22 +4,11 @@
 
 
 // Function Definitions
-bool __decen0mode(Controller& cmd_) {
-    if (cmd_.__getMomo() == "norm") {
-        std::cout << "Mode: Normal \n\n";
-        return true;
-    }
-    else if (cmd_.__getMomo() == "calc") {
-        std::cout << "Mode: Calculate \n\n";
-        return true;
-    }
-    else if (cmd_.__getMomo() == "task") {
-        std::cout << "Mode: Task \n\n";
-        return true;
-    }
-    else if (cmd_.__getMomo() == "anls") {
-        std::cout << "Mode: Analysis \n\n";
-        return true;
+bool __decen0momo_mode(Controller& cmd_) {
+    if (cmd_.__getMomo() == "norm" || cmd_.__getMomo() == "calc" || cmd_.__getMomo() == "task" || cmd_.__getMomo() == "anls") {
+        if (__decen1exec_contral(cmd_)) {
+            return true;
+        }
     }
     return false;
 }

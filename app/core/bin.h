@@ -19,7 +19,7 @@ extern "C" {
  * @return 1 if successful, 0 if failed (e.g., file cannot be opened or written).
  * @condition If _dataSize > 0, data must not be NULL; if _dataSize = 0, creates an empty file.
  */
-int __ac_saveToBinaryFile(const char* _fileName, const char* _data, size_t _dataSize);
+int             __ac_saveToBinaryFile(const char* _fileName, const char* _data, size_t _dataSize);
 
 /**
  * Reads data from a binary file into a dynamically allocated buffer.
@@ -29,7 +29,7 @@ int __ac_saveToBinaryFile(const char* _fileName, const char* _data, size_t _data
  * @return 1 if successful, 0 if failed (e.g., file not found or memory allocation failed).
  * @condition buffer and _dataSize must not be NULL; caller must free _buffer after use; handles empty files (size = 0).
  */
-int __ac_readFromBinaryFile(const char* _fileName, unsigned char** _buffer, size_t* _dataSize);
+int             __ac_readFromBinaryFile(const char* _fileName, unsigned char** _buffer, size_t* _dataSize);
 
 /**
  * Prints binary data in hex and text format to the screen.
@@ -38,7 +38,7 @@ int __ac_readFromBinaryFile(const char* _fileName, unsigned char** _buffer, size
  * @return None (void).
  * @condition If _dataSize > 0, _data must not be NULL.
  */
-void __ac_printBinaryData(const unsigned char* _data, size_t _dataSize);
+void            __ac_printBinaryData(const unsigned char* _data, size_t _dataSize);
 
 // Bit manipulation functions
 
@@ -50,7 +50,7 @@ void __ac_printBinaryData(const unsigned char* _data, size_t _dataSize);
  * @return None (void).
  * @condition _byte must not be NULL; if _position is not 0-7, function does nothing.
  */
-void __ac_setBit(unsigned char* _byte, int _position, int _value);
+void            __ac_setBit(unsigned char* _byte, int _position, int _value);
 
 /**
  * Gets the value of a bit at a specific position in a byte.
@@ -59,7 +59,7 @@ void __ac_setBit(unsigned char* _byte, int _position, int _value);
  * @return Bit value (0 or 1) if successful, -1 if position is invalid (int).
  * @condition _byte must not be NULL.
  */
-int __ac_getBit(const unsigned char* _byte, int _position);
+int             __ac_getBit(const unsigned char* _byte, int _position);
 
 /**
  * Prints all bits of the data to the screen.
@@ -68,7 +68,7 @@ int __ac_getBit(const unsigned char* _byte, int _position);
  * @return None (void).
  * @condition If _dataSize > 0, _data must not be NULL.
  */
-void __ac_printBits(const unsigned char* _data, size_t _dataSize);
+void            __ac_printBits(const unsigned char* _data, size_t _dataSize);
 
 /**
  * Converts a byte to a binary string representation (e.g., "01010101").
@@ -77,7 +77,7 @@ void __ac_printBits(const unsigned char* _data, size_t _dataSize);
  * @return None (void).
  * @condition _binaryStr must not be NULL and must have space for at least 9 characters.
  */
-void __ac_byteToBinaryString(unsigned char _byte, char* _binaryStr);
+void            __ac_byteToBinaryString(unsigned char _byte, char* _binaryStr);
 
 // Bit shift and rotate functions
 
@@ -89,7 +89,7 @@ void __ac_byteToBinaryString(unsigned char _byte, char* _binaryStr);
  * @return None (void).
  * @condition If _positions <= 0 or _dataSize = 0, function does nothing; if _dataSize > 0, _data must not be NULL.
  */
-void __ac_shiftLeft(unsigned char* _data, size_t _dataSize, int _positions);
+void            __ac_shiftLeft(unsigned char* _data, size_t _dataSize, int _positions);
 
 /**
  * Shifts all bits in the data to the right by a specified number of positions.
@@ -99,7 +99,7 @@ void __ac_shiftLeft(unsigned char* _data, size_t _dataSize, int _positions);
  * @return None (void).
  * @condition If _positions <= 0 or _dataSize = 0, function does nothing; if _dataSize > 0, _data must not be NULL.
  */
-void __ac_shiftRight(unsigned char* _data, size_t _dataSize, int _positions);
+void            __ac_shiftRight(unsigned char* _data, size_t _dataSize, int _positions);
 
 /**
  * Rotates all bits in the data to the left by a specified number of positions.
@@ -109,7 +109,7 @@ void __ac_shiftRight(unsigned char* _data, size_t _dataSize, int _positions);
  * @return None (void).
  * @condition If _positions <= 0 or _dataSize = 0, function does nothing; if _dataSize > 0, _data must not be NULL.
  */
-void __ac_rotateLeft(unsigned char* _data, size_t _dataSize, int _positions);
+void            __ac_rotateLeft(unsigned char* _data, size_t _dataSize, int _positions);
 
 /**
  * Rotates all bits in the data to the right by a specified number of positions.
@@ -119,7 +119,7 @@ void __ac_rotateLeft(unsigned char* _data, size_t _dataSize, int _positions);
  * @return None (void).
  * @condition If _positions <= 0 or _dataSize = 0, function does nothing; if _dataSize > 0, _data must not be NULL.
  */
-void __ac_rotateRight(unsigned char* _data, size_t _dataSize, int _positions);
+void            __ac_rotateRight(unsigned char* _data, size_t _dataSize, int _positions);
 
 // New features
 
@@ -130,7 +130,7 @@ void __ac_rotateRight(unsigned char* _data, size_t _dataSize, int _positions);
  * @return Sum of all bytes (unsigned int). Note: This is a basic checksum; consider CRC for better integrity.
  * @condition If _dataSize > 0, _data must not be NULL.
  */
-unsigned int __ac_calculateChecksum(const unsigned char* _data, size_t _dataSize);
+unsigned int    __ac_calculateChecksum(const unsigned char* _data, size_t _dataSize);
 
 /**
  * Converts the endianness of the data by reversing the byte order of each group of 'numberSize' bytes.
@@ -140,7 +140,7 @@ unsigned int __ac_calculateChecksum(const unsigned char* _data, size_t _dataSize
  * @return None (void).
  * @condition If _dataSize is not a multiple of _numberSize, some data may not be converted; if _dataSize > 0, _data must not be NULL.
  */
-void __ac_convertEndianness(unsigned char* _data, size_t _dataSize, size_t _numberSize);
+void            __ac_convertEndianness(unsigned char* _data, size_t _dataSize, size_t _numberSize);
 
 /**
  * Finds the first occurrence of a pattern in the data.
@@ -151,7 +151,7 @@ void __ac_convertEndianness(unsigned char* _data, size_t _dataSize, size_t _numb
  * @return Position of the first occurrence (int), or -1 if not found. Note: Returns 0 if _patternSize = 0.
  * @condition If _patternSize > _dataSize, returns -1; if _dataSize or _patternSize > 0, respective pointers must not be NULL.
  */
-int __ac_findPattern(const unsigned char* _data, size_t _dataSize, const unsigned char* _pattern, size_t _patternSize);
+int             __ac_findPattern(const unsigned char* _data, size_t _dataSize, const unsigned char* _pattern, size_t _patternSize);
 
 /**
  * Counts the number of set bits (1s) in the entire data block.
@@ -160,7 +160,7 @@ int __ac_findPattern(const unsigned char* _data, size_t _dataSize, const unsigne
  * @return Number of set bits (size_t).
  * @condition If _dataSize > 0, _data must not be NULL.
  */
-size_t __ac_countSetBits(const unsigned char* _data, size_t _dataSize);
+size_t          __ac_countSetBits(const unsigned char* _data, size_t _dataSize);
 
 /**
  * Finds the position of the first set bit (starting from the left, most significant bit).
@@ -169,7 +169,7 @@ size_t __ac_countSetBits(const unsigned char* _data, size_t _dataSize);
  * @return Position of the first set bit (int, 0 is the MSB of the first byte), or -1 if none found.
  * @condition If _dataSize > 0, _data must not be NULL.
  */
-int __ac_findFirstSetBit(const unsigned char* _data, size_t _dataSize);
+int             __ac_findFirstSetBit(const unsigned char* _data, size_t _dataSize);
 
 /**
  * Finds the position of the last set bit (starting from the right, least significant bit).
@@ -178,7 +178,7 @@ int __ac_findFirstSetBit(const unsigned char* _data, size_t _dataSize);
  * @return Position of the last set bit (int, 0 is the MSB of the first byte), or -1 if none found.
  * @condition If _dataSize > 0, _data must not be NULL.
  */
-int __ac_findLastSetBit(const unsigned char* _data, size_t _dataSize);
+int             __ac_findLastSetBit(const unsigned char* _data, size_t _dataSize);
 
 /**
  * Creates a new BinaryData structure with the specified size.
@@ -186,7 +186,7 @@ int __ac_findLastSetBit(const unsigned char* _data, size_t _dataSize);
  * @return Pointer to the new BinaryData structure, or NULL if allocation fails.
  * @condition _size must be >= 0; reports error if allocation fails.
  */
-BinaryData_* __ac_createBinaryData(size_t _size);
+BinaryData_*    __ac_createBinaryData(size_t _size);
 
 /**
  * Destroys the BinaryData structure and frees its memory.
@@ -194,7 +194,7 @@ BinaryData_* __ac_createBinaryData(size_t _size);
  * @return None (void).
  * @condition Safe to pass NULL; no action taken if NULL.
  */
-void __ac_destroyBinaryData(BinaryData_* _bd);
+void            __ac_destroyBinaryData(BinaryData_* _bd);
 
 /**
  * Creates a copy of the BinaryData structure.
@@ -202,7 +202,7 @@ void __ac_destroyBinaryData(BinaryData_* _bd);
  * @return Pointer to the new copied BinaryData structure, or NULL if allocation fails or src is NULL.
  * @condition If _src is NULL, returns NULL and reports error.
  */
-BinaryData_* __ac_copyBinaryData(const BinaryData_* _src);
+BinaryData_*    __ac_copyBinaryData(const BinaryData_* _src);
 
 
 #ifdef __cplusplus

@@ -25,9 +25,9 @@ void __CCU__() {
         Controller CLI_;
         if (CLI_.__splitString(_ccu)) {
             CLI_.__CommandCLI();
-            //CLI_.__displayParts();
+            //CLI_.__displayParts();    // Test
             std::cout << std::endl;
-            __decen0momoCCU(CLI_);
+            __decen0momo_CCU(CLI_);
         }
         
         if (CLI_.__getMomo() == "cls" || CLI_.__getMomo() == "clear") {
