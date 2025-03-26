@@ -28,30 +28,75 @@ void __test000002() {
 
 int __test000003() {
     // TEST ----------------------------------app/core/bin
-    // Dữ liệu lớn để thử nghiệm
-    const char* largeData = "This is a large data sample for testing binary file operations!";
-    size_t dataSize = strlen(largeData);
+    
+    // Sample data
+    const char* _largeData = "Hello, World!";
+    size_t _dataSize = strlen(_largeData);
 
-    // Ghi dữ liệu vào file
-    if (saveToBinaryFile("large_data.bin", largeData, dataSize)) {
-        printf("Successfully saved data to large_data.bin\n");
+    // Save data to file
+    if (__ac_saveToBinaryFile("cache/data/data.bin", _largeData, _dataSize)) {
+        printf("Successfully saved %zu bytes to data.bin\n", _dataSize);
     } else {
-        printf("Failed to save data\n");
+        printf("02: !(app/proc/test.cpp)\nFailed to save data\n");
         return 1;
     }
 
-    // Đọc dữ liệu từ file
-    char* buffer = NULL;
-    size_t readSize = 0;
-    if (readFromBinaryFile("large_data.bin", &buffer, &readSize)) {
-        printf("Successfully read %zu bytes from file\n", readSize);
+    // Read data from file
+    unsigned char* _buffer = NULL;
+    size_t _readSize = 0;
+    if (__ac_readFromBinaryFile("cache/data/data.bin", &_buffer, &_readSize)) {
+        printf("Successfully read %zu bytes from file\n", _readSize);
     
-        // In dữ liệu ra màn hình
-        printBinaryData(buffer, readSize);
+        // Print original data
+        printf("Original data:\n");
+        __ac_printBinaryData(_buffer, _readSize);
+        __ac_printBits(_buffer, _readSize);
+    
+        // Calculate checksum
+        unsigned int checksum = __ac_calculateChecksum(_buffer, _readSize);
+        printf("Checksum: %u\n", checksum);
+    
+        // Find pattern before converting endianness
+        const unsigned char pattern[] = {0x6f, 0x2c}; // 'o '
+        size_t patternSize = sizeof(pattern);
+        int patternPos = __ac_findPattern(_buffer, _readSize, pattern, patternSize);
+        if (patternPos != -1) {
+            printf("Pattern found at position %d\n", patternPos);
+        } else {
+            printf("Pattern not found\n");
+        }
         
-        free(buffer);  // Giải phóng bộ nhớ
+        // Convert endianness only if size is a multiple of 2
+        if (_readSize % 2 != 0) {
+            printf("Skipping endianness conversion: Data size (%zu) is not a multiple of 2.\n", _readSize);
+        } else {
+            __ac_convertEndianness(_buffer, _readSize, 2);
+            printf("\nAfter converting endianness (2-byte numbers):\n");
+            __ac_printBinaryData(_buffer, _readSize);
+            __ac_printBits(_buffer, _readSize);
+        }
+        
+        // Count set bits
+        size_t setBits = __ac_countSetBits(_buffer, _readSize);
+        printf("Number of set bits: %zu\n", setBits);
+        
+        // Find first and last set bits
+        int _firstSetBit = __ac_findFirstSetBit(_buffer, _readSize);
+        int _lastSetBit = __ac_findLastSetBit(_buffer, _readSize);
+        printf("First set bit position: %d\n", _firstSetBit);
+        printf("Last set bit position: %d\n", _lastSetBit);
+        
+        // Memory management example
+        BinaryData_* _bd = __ac_createBinaryData(_readSize);
+        if (_bd) {
+            memcpy(_bd->_data, _buffer, _readSize);
+            printf("Copied data to BinaryData structure.\n");
+            __ac_destroyBinaryData(_bd);
+        }
+        
+        free(_buffer);  // Free allocated memory
     } else {
-        printf("Failed to read data\n");
+        printf("04: !(app/proc/test.cpp)\nFailed to read data\n");
         return 1;
     }
 
