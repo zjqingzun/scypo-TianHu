@@ -1,12 +1,11 @@
+// include <string.h>
+#ifndef STRING_H
+#define STRING_H
+// config/src/prog-import.json - AC0007
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-
-
-
-#ifndef STRINGFILE_H
-#define STRINGFILE_H
 
 #ifdef __cplusplus
 extern "C" {

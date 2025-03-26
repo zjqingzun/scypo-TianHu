@@ -138,11 +138,13 @@ DSYSSWARE = \
 
 
 CORE = \
+	$(DOBJ)/bin.o \
 	$(DOBJ)/gui.o \
 	$(DOBJ)/char.o \
 	$(DOBJ)/str.o \
 	$(DOBJ)/file.o \
-	$(DOBJ)/err.o
+	$(DOBJ)/err.o \
+	$(DOBJ)/exc.o
 
 LIBR = \
 	$(DOBJ)/cJSON.o

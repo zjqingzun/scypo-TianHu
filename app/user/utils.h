@@ -1,3 +1,8 @@
+#ifndef UTILS_H
+#define UTILS_H
+// config/src/prog-import.json - AU0003
+
+
 // include/cxx-cxx
 #include "../../include/cxx-cxx/frac.h"
 #include "../../include/cxx-cxx/entity.h"
@@ -14,3 +19,6 @@
 
 
 // include/python-cxx
+
+
+#endif // UTILS_H

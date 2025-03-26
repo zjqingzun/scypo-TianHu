@@ -6,6 +6,7 @@
 
 // main()
 int main() {
-    __CCU__();
+    //__CCU__();
+    __test000003();
     return 0;
 }

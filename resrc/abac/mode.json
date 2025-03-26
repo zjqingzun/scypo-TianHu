@@ -1,4 +1,12 @@
 {
+    "help": {
+        "description": "Help for the operating mode",
+        "syntax": "help </...>"
+    },
+    "-h": {
+        "description": "Help for the operating mode",
+        "syntax": "-h </...>"
+    },
     "interface": {
         "description": "Convert UI graphics (CLI, app, web, etc.)",
         "syntax": "interface ..."
@@ -17,10 +25,10 @@
     },
     "task": {
         "description": "Operating mode in a single-task state for solving a specific problem",
-        "syntax": "calc ..."
+        "syntax": "task ..."
     },
     "anls": {
         "description": "Operating mode in data analysis, system validation, data research, machine learning, deep learning, AGI, etct",
-        "syntax": "calc ..."
+        "syntax": "anls ..."
     }
 }

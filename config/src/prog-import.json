@@ -1,0 +1,98 @@
+{
+    "AC": {
+        "macro": "...",
+        "path": "..."
+    },
+    "AC0001": {
+        "macro": "BIN_H",
+        "path": "app/core/bin.h"
+    },
+    "AC0002": {
+        "macro": "CHAR_H",
+        "path": "app/core/char.h"
+    },
+    "AC0003": {
+        "macro": "ERROR_H",
+        "path": "app/core/err.h"
+    },
+    "AC0004": {
+        "macro": "EXCHANGE_H",
+        "path": "app/core/exc.h"
+    },
+    "AC0005": {
+        "macro": "FILE_H",
+        "path": "app/core/file.h"
+    },
+    "AC0006": {
+        "macro": "GUI_H",
+        "path": "app/core/gui.h"
+    },
+    "AC0007": {
+        "macro": "STRING_H",
+        "path": "app/core/str.h"
+    },
+    "AL": {
+        "macro": "...",
+        "path": "..."
+    },
+    "AL0001": {
+        "macro": "cJSON__h",
+        "path": "app/lib/cJSON.h"
+    },
+    "AP": {
+        "macro": "...",
+        "path": "..."
+    },
+    "AP0001": {
+        "macro": "COREPROG_H",
+        "path": "app/proc/coreprog.h"
+    },
+    "AP0002": {
+        "macro": "CONTROLLER_H",
+        "path": "app/proc/ctl.h"
+    }, 
+    "AP0003": {
+        "macro": "SYSSWARE_H",
+        "path": "app/proc/sysware.h"
+    },
+    "AP0004": {
+        "macro": "TEST_H",
+        "path": "app/proc/test.h"
+    },
+    "AU": {
+        "macro": "...",
+        "path": "..."
+    },
+    "AU0001": {
+        "macro": "SYSCALL_H",
+        "path": "app/user/syscall.h"
+    },
+    "AU0002": {
+        "macro": "USER_H",
+        "path": "app/user/user.h"
+    },
+    "AU0003": {
+        "macro": "UTILS_H",
+        "path": "app/user/utils.h"
+    },
+    "D": {
+        "macro": "...",
+        "path": "..."
+    },
+    "I": {
+        "macro": "...",
+        "path": "..."
+    },
+    "P": {
+        "macro": "...",
+        "path": "..."
+    },
+    "G": {
+        "macro": "...",
+        "path": "..."
+    },
+    "T": {
+        "macro": "...",
+        "path": "..."
+    }
+}

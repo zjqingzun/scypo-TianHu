@@ -1,15 +1,14 @@
+// include <error.h>
+#ifndef ERROR_H
+#define ERROR_H
+// config/src/prog-import.json - AC0003
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 
 #include "../lib/cJSON.h"
-
-
-
-
-#ifndef ERROR_H
-#define ERROR_H
 
 #ifdef __cplusplus
 extern "C" {

@@ -1,3 +1,8 @@
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
+// config/src/prog-import.json - AP0002
+
+
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -67,3 +72,6 @@ class Controller {
         void __displayParts() const;
         std::string __command() const;
 };
+
+
+#endif // CONTROLLER_H

@@ -1,3 +1,7 @@
+#ifndef USER_H
+#define USER_H
+// config/src/prog-import.json - AU0002
+
 // SCL - Supplementary Construction Library for C++
 #include "../proc/coreprog.h"
 #include "utils.h"
@@ -32,3 +36,6 @@ bool __helpZProcessAndPrintJson(const char* _fileName);
 
 
 // zerotrace.cpp
+
+
+#endif // USER_H
