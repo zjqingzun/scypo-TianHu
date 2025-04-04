@@ -14,38 +14,38 @@ Education: Ho Chi Minh City University of Science, HCMUS, VNU-HCM
 
 
 ## Lisense
-### version.scyo-scypo
+### _version.scyo-scypo_
 Apache Lisense 2.0
 
-### version.scyp
+### _version.scyp_
 Monopoly: zjqingzun
 
-### Other version.scyl
-_Context-dependent_
+### _Other version.scyl_
+Context-dependent
 
 
 ## Environment
-### Programming Language C
+### _Programming Language C_
 gcc.exe (Rev2, Built by MSYS2 project) 14.2.0
 Copyright (C) 2024 Free Software Foundation, Inc.
 ```
 gcc --version
 ```
 
-### Programming Language C++
+### _Programming Language C++_
 g++.exe (Rev2, Built by MSYS2 project) 14.2.0
 Copyright (C) 2024 Free Software Foundation, Inc.
 ```
 g++ --version
 ```
 
-### Programming Language RUST
+### _Programming Language Rust_
 rustc 1.85.0 (4d91de4e4 2025-02-17)
 ```
 rustc --version
 ```
 
-### Programming Language Python
+### _Programming Language Python_
 Python 3.13.1
 ```
 python --version
@@ -53,15 +53,15 @@ python --version
 
 
 ## Usage
-### Debug Code
+### _Debug Code_
 ```sh
 make debug
 ```
-### Build Code and Run Code
+### _Build Code and Run Code_
 ```sh
 make run
 ```
-### Clean Code
+### _Clean Code_
 ```sh
 make clean
 ```
