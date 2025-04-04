@@ -1,0 +1,7 @@
+Begin: B000042
+
+
+# MSYS2 MINGW64
+
+pacman -S mingw-w64-x86_64-python
+pacman -S mingw-w64-x86_64-python-pip
