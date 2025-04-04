@@ -59,6 +59,18 @@ else
     endif
 endif
 
+
+#### PYTHON CONFIGURATION ####
+# Python settings | Python设置
+PYTHON = python3  # Python interpreter
+PYTHON_CONFIG = $(PYTHON)-config # Python config command
+#PYTHON_INCLUDE = $(shell $(PYTHON_CONFIG) --includes) # Python include path
+#PYTHON_LIBS = $(shell $(PYTHON_CONFIG) --libs) # Python libraries
+PYTHON_INCLUDE = -ID:/src--mingw64/mingw64/include/python3.12
+PYTHON_LIBS    = -LD:/src--mingw64/mingw64/lib -lpython3.12
+PYTHON_DLL = D:/src--mingw64/mingw64/bin/python3.12.dll
+
+
 #### COMPILATION FLAGS ####
 # Compilation flags for warnings and optimization | 编译标志，用于警告和优化
 CPPFLAGS = -Wall -Wextra  # Common flags
@@ -87,6 +99,7 @@ DINCLUDEPYTHON = include/cxx-python
 DOBJ = obj
 DRUST = plugins/rust
 DPYTHON = plugins/python
+DPYTHONRUNTIME = $(DPYTHON)/runtime
 DRUSTSECRUST = $(DRUST)/secrust/target/release
 DRUST0TRACE  = $(DRUST)/zerotrace/target/release
 DSCRIPT = scripts
@@ -121,8 +134,10 @@ DDE0 = \
 	$(DOBJ)/0module.o
 
 DDE1 = \
+	$(DOBJ)/1call.o \
 	$(DOBJ)/1exec.o \
-	$(DOBJ)/1launch.o
+	$(DOBJ)/1launch.o \
+	$(DOBJ)/1zerotask.o
 
 DDE2 = \
 	$(DOBJ)/2stdd.o
@@ -191,18 +206,28 @@ all: debug
 # Check versions of build tools | 检查构建工具的版本
 check-tools:
 	@echo Checking versions of build tools...
+	@echo "...C/C++ Compiler..."
 	@gcc --version | head -n 1
 	@g++ --version | head -n 1
+	@echo "...Rust Compiler..."
 	@cargo --version
+	@rustc --version
+	@echo "...Python Interpreter..."
+	@python --version
+	@python3 --version
 	@echo Build tools check completed.
+
+# Compile Python files | 编译Python文件
+compile-python:
+	$(PYTHON) -m compileall $(DPYTHON)
 
 # Debug build: Compile with debug flags and copy required DLLs | 调试构建：使用调试标志编译并复制所需DLL
 debug: CPPFLAGS += $(DEBUGFLAGS)
-debug: dirs check-tools $(DRUSTLCIPH) $(DRUSTLSECRUST) $(DRUSTL0TRACE) $(BIN) copy-dlls
+debug: dirs check-tools compile-python $(DRUSTLCIPH) $(DRUSTLSECRUST) $(DRUSTL0TRACE) $(BIN) copy-dlls
 
 # Release build: Compile with optimization flags and copy required DLLs | 发布构建：使用优化标志编译并复制所需DLL
 release: CPPFLAGS += $(RELEASEFLAGS)
-release: dirs check-tools $(DRUSTLCIPH) $(DRUSTLSECRUST) $(DRUSTL0TRACE) $(BIN) copy-dlls
+release: dirs check-tools compile-python $(DRUSTLCIPH) $(DRUSTLSECRUST) $(DRUSTL0TRACE) $(BIN) copy-dlls
 
 # Rule to build Rust ciph crate | 构建Rust ciph crate的规则
 $(DRUSTLCIPH):
@@ -218,7 +243,7 @@ $(DRUSTL0TRACE):
 
 # Link object files to create the executable | 链接目标文件以创建可执行文件
 $(BIN): $(OBJS)
-	$(CXX) $(CPPFLAGS) $(OBJS) -o $(BIN) $(DRUSTLCIPH) $(DRUSTLSECRUST) $(DRUSTL0TRACE) -L$(DCIPH) -L$(DRUSTSECRUST) -L$(DRUST0TRACE)
+	$(CXX) $(CPPFLAGS) $(OBJS) -o $(BIN) $(DRUSTLCIPH) $(DRUSTLSECRUST) $(DRUSTL0TRACE) $(PYTHON_LIBS) -L$(DCIPH) -L$(DRUSTSECRUST) -L$(DRUST0TRACE)
 	@echo Linking completed: $(BIN) created successfully
 
 # Rule to copy dynamic libraries to the current directory | 将动态库复制到当前目录的规则
@@ -227,7 +252,7 @@ ifeq ($(OS),Windows)
 	-@if exist "$(subst /,\,$(DRUSTDCIPH))" $(COPY) "$(subst /,\,$(DRUSTDCIPH))" . && echo Copied $(DRUSTDCIPH) to current directory
 	-@if exist "$(subst /,\,$(DRUSTDSECRUST))" $(COPY) "$(subst /,\,$(DRUSTDSECRUST))" . && echo Copied $(DRUSTDSECRUST) to current directory
 	-@if exist "$(subst /,\,$(DRUSTD0TRACE))" $(COPY) "$(subst /,\,$(DRUSTD0TRACE))" . && echo Copied $(DRUSTD0TRACE) to current directory
-else
+else	
 	-@if [ -f "$(DRUSTDCIPH)" ]; then $(COPY) "$(DRUSTDCIPH)" . && echo Copied $(DRUSTDCIPH) to current directory; fi
 	-@if [ -f "$(DRUSTDSECRUST)" ]; then $(COPY) "$(DRUSTDSECRUST)" . && echo Copied $(DRUSTDSECRUST) to current directory; fi
 	-@if [ -f "$(DRUSTD0TRACE)" ]; then $(COPY) "$(DRUSTD0TRACE)" . && echo Copied $(DRUSTD0TRACE) to current directory; fi
@@ -260,7 +285,7 @@ $(DOBJ)/%.o: $(DCLASS0)/%.cpp
 	@echo Compiled $< to $@
 
 $(DOBJ)/%.o: $(DCLASS1)/%.cpp
-	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -I$(DINCLUDE) -I$(DINCLUDERUST) -MMD -MP -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(PYTHON_INCLUDE) -I$(DINCLUDE) -I$(DINCLUDERUST) -I$(DINCLUDEPYTHON) -MMD -MP -c $< -o $@
 	@echo Compiled $< to $@
 
 $(DOBJ)/%.o: $(DCLASS2)/%.cpp
@@ -286,11 +311,13 @@ ifeq ($(OS),Windows)
 	-@if not exist "$(subst /,\,$(DRUSTDCIPH))" echo Error: $(DRUSTDCIPH) not found && exit /b 1
 	-@if not exist "$(subst /,\,$(DRUSTDSECRUST))" echo Error: $(DRUSTDSECRUST) not found && exit /b 1
 	-@if not exist "$(subst /,\,$(DRUSTD0TRACE))" echo Error: $(DRUSTD0TRACE) not found && exit /b 1
+	-@if not exist "$(subst /,\,$(DPYTHONRUNTIME)/runtime.py)" echo Error: $(DPYTHONRUNTIME)/runtime.py not found && exit /b 1
 else
 	-@if [ ! -f "$(BIN)" ]; then echo Error: $(BIN) not found; exit 1; fi
 	-@if [ ! -f "$(DRUSTDCIPH)" ]; then echo Error: $(DRUSTDCIPH) not found; exit 1; fi
 	-@if [ ! -f "$(DRUSTDSECRUST)" ]; then echo Error: $(DRUSTDSECRUST) not found; exit 1; fi
 	-@if [ ! -f "$(DRUSTD0TRACE)" ]; then echo Error: $(DRUSTD0TRACE) not found; exit 1; fi
+	-@if [ ! -f "$(DPYTHONRUNTIME)/runtime.py" ]; then echo Error: $(DPYTHONRUNTIME)/runtime.py not found; exit 1; fi
 endif
 	@echo All required files are present.
 
@@ -309,10 +336,12 @@ ifeq ($(OS),Windows)
 	-@$(RM) zerotrace.$(DLL_EXT) 2>NUL
 	-@if exist "bin" (for %%f in (bin\*) do if not "%%~nxf"=="permanent.tmp" del /f /q "%%f") 2>NUL
 	-@if exist "cache" (for %%f in (cache\*) do if not "%%~nxf"=="permanent.tmp" del /f /q "%%f") 2>NUL
+	-@for /d /r plugins\python %%d in (__pycache__) do @if exist "%%d" rd /s /q "%%d"
 else
 	-@$(RM) $(BIN) $(DOBJ)/*.o $(DOBJ)/*.d ciph.$(DLL_EXT) secrust.$(DLL_EXT) zerotrace.$(DLL_EXT)
 	-@find bin -type f -not -name "permanent.tmp" -exec rm -f {} \; 2>/dev/null || true
 	-@find cache -type f -not -name "permanent.tmp" -exec rm -f {} \; 2>/dev/null || true
+	-@find plugins/python -type d -name "__pycache__" -exec rm -rf {} \; 2>/dev/null || true
 endif
 	-@cd config/ciph && cargo clean
 	-@cd plugins/rust/secrust && cargo clean
@@ -323,4 +352,4 @@ debug-gdb: $(BIN)
 	gdb -q ./$(BIN)
 
 # Declare phony targets | 声明伪目标
-.PHONY: all debug release run clean debug-gdb print-objs copy-dlls dirs check-before-run check-tools
+.PHONY: all debug release run clean debug-gdb print-objs copy-dlls dirs check-before-run check-tools compile-python

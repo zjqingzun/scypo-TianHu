@@ -15,6 +15,7 @@
 
 
 // include/cxx-python
+#include "../../include/cxx-python/zerotask.h"
 
 
 

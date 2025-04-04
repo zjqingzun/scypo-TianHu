@@ -1,4 +1,4 @@
 # root/plugins/python/runtime.py
-def taskRun():
-    print("Hello from Python! This is taskRun speaking.")
-    return True
+def __taskRun():
+    print("taskRun is running from Python!")
+    return 42  # Giá trị trả về tùy ý

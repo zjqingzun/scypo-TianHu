@@ -10,8 +10,12 @@
 
 
 // Function Declarations
-bool __decen1exec_contral(Controller& cmd_);
+// C++
+bool __decen1exec_contral(Controller& cmd_, int flags = 0);
 bool __decen1exec_launch(Controller& cmd_);
+
+// Python
+void __decen1exec_callPython(const char* scriptName, const char* functionName);
 bool __decen1exec_zerotask(Controller& cmd_);
 
 
