@@ -53,6 +53,7 @@ python --version
 
 
 ## Usage
+Use Git Bash command-line to run this project program.
 ### _Debug Code_
 ```sh
 make debug
