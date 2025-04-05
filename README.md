@@ -7,15 +7,15 @@
 </p>
 
 
-## Author
+## AUTHOR
 zjqingzun - Le Trong Nghia <br>
 Profession: Software Engineer, Pentester, Tester <br>
 Education: Ho Chi Minh City University of Science, HCMUS, VNU-HCM
 
 
-## Lisense
+## LICENSE
 ### _version.scyo-scypo_
-Apache Lisense 2.0
+Apache License 2.0
 
 ### _version.scyp_
 Monopoly: zjqingzun
@@ -24,7 +24,7 @@ Monopoly: zjqingzun
 Context-dependent
 
 
-## Environment
+## ENVIRONMENT 
 ### _Programming Language C_
 gcc.exe (Rev2, Built by MSYS2 project) 14.2.0
 Copyright (C) 2024 Free Software Foundation, Inc.
@@ -52,7 +52,7 @@ python --version
 ```
 
 
-## Usage
+## USAGE
 Use Git Bash command-line to run this project program.
 ### _Debug Code_
 ```sh
@@ -66,3 +66,14 @@ make run
 ```sh
 make clean
 ```
+
+
+
+## FEATURE
+1. User support toolkit.
+2. Program launch task (forced).
+3. Data encryption/decryption using classical cryptography, symmetric/asymmetric modern cryptography.
+4. Attack algorithms for breaking weak keys, breaking strong keys, and wide-range cryptanalysis.
+5. Advanced machine learning models for cryptanalysis activities.
+
+
