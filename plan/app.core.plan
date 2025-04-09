@@ -1,0 +1,41 @@
+@app.core
+# Project: app.core
+# Version: 0.0.x
+# Date: 2025-03-03
+# Author: zjqingzun
+# Description: This is a plan file for the app.core project. It includes the main components and their relationships.
+# The plan file is used to outline the structure and organization of the project.
+
+
+@app.core
+$ Programming Language: C, Header C
+$ Language: Vietnamese
+$ Encoding: UTF-8
+$ Line Ending: LF
+$ Line Length: 80
+$ Indentation: 4 spaces
+$ Comment Style: C-style comments (/* ... */ and // ...)
+$ File Extension: .c, .h
+
+
+@app.core
+# Complete the plan file
+& (bin.c)       |   
+& (bin.h)       |
+& (err.c)       |
+& (err.h)       |
+& (file.c)      |
+& (file.h)      |
+& (str.c)       |
+& (str.h)       |
+
+
+@app.core
+# The following files are not part of the plan file
+! (char.h)      |
+! (char.c)      |
+! (exc.c)       |
+! (exc.h)       |
+! (gui.c)       |  
+! (gui.h)       |
+! (z_type.h)    |
